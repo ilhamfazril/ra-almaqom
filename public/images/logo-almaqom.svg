@@ -1,20 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
-  <!-- Rounded White Shield Badge for sharp favicon contrast -->
-  <rect width="500" height="500" rx="100" fill="#ffffff" />
-  
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
   <defs>
     <!-- Curve path for arched top text: RAUDHATUL ATHFAL -->
-    <path id="favArch" d="M 50,230 A 215,215 0 0,1 450,230" fill="none" />
+    <path id="archPathAlMaqom" d="M 50,230 A 215,215 0 0,1 450,230" fill="none" />
   </defs>
 
   <!-- Arched Top Text: RAUDHATUL ATHFAL -->
   <text fill="#009B4D" font-family="'Plus Jakarta Sans', Arial, -apple-system, sans-serif" font-weight="900" font-size="34" letter-spacing="3.5">
-    <textPath href="#favArch" startOffset="50%" text-anchor="middle">
+    <textPath href="#archPathAlMaqom" startOffset="50%" text-anchor="middle">
       RAUDHATUL ATHFAL
     </textPath>
   </text>
 
-  <!-- Central Mosque Dome & Calligraphy Emblem -->
+  <!-- Central Emblem: Stylized Mosque Dome & Arabic Calligraphy 'Al-Maqom' -->
   <g fill="#009B4D">
     <!-- Outer Dome Canopy Arch -->
     <path d="M 52,320 C 60,285 86,242 120,210 C 158,175 204,156 250,150 C 296,156 342,175 380,210 C 414,242 440,285 448,320 L 434,320 C 426,288 402,248 370,218 C 334,185 292,168 250,162 C 208,168 166,185 130,218 C 98,248 74,288 66,320 Z" />
@@ -22,7 +19,7 @@
     <!-- Inner Parallel Dome Rib -->
     <path d="M 88,320 C 96,294 116,260 144,234 C 174,206 210,190 250,184 C 290,190 326,206 356,234 C 384,260 404,294 412,320 L 400,320 C 392,296 374,265 348,241 C 320,215 287,200 250,194 C 213,200 180,215 152,241 C 126,265 108,296 100,320 Z" />
 
-    <!-- Two Dots of Qaf -->
+    <!-- Two Dots of the letter Qaf (ق) -->
     <circle cx="233" cy="214" r="11.5" />
     <circle cx="267" cy="214" r="11.5" />
 
@@ -31,7 +28,7 @@
     <!-- White Eye of the Qaf -->
     <circle cx="250" cy="273" r="6.5" fill="#ffffff" />
 
-    <!-- Stem of Qaf -->
+    <!-- Stem of the Qaf to Baseline -->
     <rect x="244" y="296" width="12" height="24" rx="2" />
 
     <!-- Left Arabic Calligraphic Form ('Alif-Lam') -->
@@ -42,11 +39,11 @@
     <path d="M 432,320 C 430,285 408,256 378,242 C 358,232 340,235 334,248 C 328,261 334,277 344,292 C 352,304 362,314 368,320 L 382,320 C 374,312 364,300 358,290 C 352,278 348,266 352,258 C 356,250 368,247 384,256 C 406,268 422,292 422,320 Z" />
     <path d="M 330,320 C 330,272 314,244 292,236 C 282,233 274,238 270,248 C 266,260 270,278 278,295 C 284,308 292,318 296,320 L 310,320 C 304,316 296,306 292,293 C 285,278 283,265 286,257 C 289,250 295,248 302,251 C 318,258 326,282 326,320 Z" />
 
-    <!-- Vaults -->
+    <!-- Intermediate inner curved vaults -->
     <path d="M 126,320 C 135,286 148,268 164,268 C 180,268 191,286 198,320 Z" />
     <path d="M 302,320 C 309,286 320,268 336,268 C 352,268 365,286 374,320 Z" />
 
-    <!-- Base Bar -->
+    <!-- Solid Horizontal Grounding Base Bar -->
     <rect x="48" y="320" width="404" height="15" rx="3" />
   </g>
 

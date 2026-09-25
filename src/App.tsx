@@ -227,10 +227,10 @@ export default function App() {
                   Kilas Sejarah
                 </div>
                 <h1 className="text-2xl sm:text-3xl font-extrabold mt-1">
-                  Sejarah & Profil MTs Fatahillah Cimahi
+                  Sejarah & Profil RA Al-Maqom
                 </h1>
                 <p className="text-xs sm:text-sm text-emerald-200 mt-1">
-                  Dedikasi pengabdian Yayasan Fatahillah Cimahi dalam mencerdaskan dan membentuk generasi berkarakter sejak tahun 1983.
+                  Dedikasi pengabdian Yayasan Al-Maqom dalam mendidik generasi tunas bangsa yang cerdas, ceria, dan berakhlakul karimah.
                 </p>
               </div>
             </div>
@@ -247,10 +247,10 @@ export default function App() {
                   Tenaga Pendidik & Staf
                 </div>
                 <h1 className="text-2xl sm:text-3xl font-extrabold mt-1">
-                  Dewan Guru & Tenaga Kependidikan
+                  Bunda Guru & Tenaga Kependidikan
                 </h1>
                 <p className="text-xs sm:text-sm text-emerald-200 mt-1">
-                  Tenaga pendidik profesional, berpengalaman, dan berdedikasi tinggi membimbing potensi akademik serta moral siswa.
+                  Pendidik profesional, sabar, ramah, dan berdedikasi tinggi membimbing potensi kecerdasan serta adab santri cilik.
                 </p>
               </div>
             </div>
@@ -269,13 +269,13 @@ export default function App() {
               <div className="max-w-7xl mx-auto">
                 {renderSubpageTopBackButton()}
                 <div className="text-xs text-amber-400 font-bold uppercase tracking-wider">
-                  Informasi Khusus Akademik
+                  Informasi Khusus Pembelajaran
                 </div>
                 <h1 className="text-2xl sm:text-3xl font-extrabold mt-1">
-                  Kurikulum Merdeka Mandiri, ANBK & Karakter Mulia
+                  Kurikulum Merdeka PAUD/RA, Tahfidz Cilik & Karakter Islami
                 </h1>
                 <p className="text-xs sm:text-sm text-emerald-200 mt-1">
-                  Pusat informasi kurikulum resmi terintegrasi, kesiapan asesmen komputer (CBT), dan pembiasaan karakter peserta didik MTs Fatahillah Cimahi.
+                  Pusat informasi kurikulum terpadu bermain sambil belajar, bimbingan hafalan surat pendek, dan pembiasaan adab santri RA Al-Maqom.
                 </p>
               </div>
             </div>
@@ -293,13 +293,13 @@ export default function App() {
               <div className="max-w-7xl mx-auto">
                 {renderSubpageTopBackButton()}
                 <div className="text-xs text-amber-400 font-bold uppercase tracking-wider">
-                  Kesiswaan & Organisasi
+                  Kreativitas & Minat Bakat
                 </div>
                 <h1 className="text-2xl sm:text-3xl font-extrabold mt-1">
-                  Ekstrakurikuler & OSIS MTs Fatahillah Cimahi
+                  Aktivitas Ekstrakurikuler & Kreativitas Santri RA Al-Maqom
                 </h1>
                 <p className="text-xs sm:text-sm text-emerald-200 mt-1">
-                  Wadah pengembangan minat, bakat, kepemimpinan, kepramukaan, dan kreativitas siswa.
+                  Wadah pengembangan minat bakat anak usia dini, drumband cilik, seni tari Islami, menggambar, dan tahfidz.
                 </p>
               </div>
             </div>
@@ -316,10 +316,10 @@ export default function App() {
                   Pencapaian & Prestasi
                 </div>
                 <h1 className="text-2xl sm:text-3xl font-extrabold mt-1">
-                  Prestasi Membanggakan Siswa MTs Fatahillah Cimahi
+                  Prestasi Membanggakan Santri RA Al-Maqom
                 </h1>
                 <p className="text-xs sm:text-sm text-emerald-200 mt-1">
-                  Bukti nyata komitmen bimbingan dalam melahirkan juara akademik maupun non-akademik di tingkat kota hingga provinsi.
+                  Bukti nyata komitmen bimbingan dalam melatih keberanian, kreativitas, dan rasa percaya diri santri cilik.
                 </p>
               </div>
             </div>
@@ -336,10 +336,10 @@ export default function App() {
                   Sarana & Prasarana
                 </div>
                 <h1 className="text-2xl sm:text-3xl font-extrabold mt-1">
-                  Sarana & Fasilitas Sekolah MTs Fatahillah Cimahi
+                  Sarana & Fasilitas Edukatif RA Al-Maqom
                 </h1>
                 <p className="text-xs sm:text-sm text-emerald-200 mt-1">
-                  Dukungan sarana laboratorium komputer CBT/ANBK, ruang kelas nyaman, perpustakaan, dan lapangan olahraga.
+                  Dukungan sarana ruang kelas tematik ber-AC, taman bermain outdoor (playground), musala cilik, dan pojok literasi bergambar.
                 </p>
               </div>
             </div>
@@ -356,7 +356,7 @@ export default function App() {
                   Penerimaan Peserta Didik Baru (PPDB)
                 </div>
                 <h1 className="text-2xl sm:text-3xl font-extrabold mt-1">
-                  Portal PPDB 2027/2028 MTs Fatahillah Cimahi
+                  Portal PPDB 2027/2028 RA Al-Maqom
                 </h1>
                 <p className="text-xs sm:text-sm text-emerald-200 mt-1">
                   Informasi resmi pendaftaran peserta didik baru, kuota kelas, serta fasilitas beasiswa pendidikan.
@@ -509,7 +509,7 @@ export default function App() {
               </div>
               <div>
                 <h3 className="font-extrabold text-slate-900 text-base leading-tight">Konfirmasi Keluar</h3>
-                <p className="text-[11px] text-slate-500">Panel Admin MTs Fatahillah Cimahi</p>
+                <p className="text-[11px] text-slate-500">Panel Admin RA Al-Maqom</p>
               </div>
             </div>
 

@@ -172,7 +172,7 @@ export const AdminOverviewTab: React.FC<AdminOverviewTabProps> = ({
               <span>Workspace Administrator Resmi</span>
             </div>
             <h2 className="text-xl sm:text-2xl font-black tracking-tight">
-              Selamat Datang di Panel Manajemen MTs Fatahillah Cimahi
+              Selamat Datang di Panel Manajemen RA Al-Maqom
             </h2>
             <p className="text-emerald-100/90 text-sm mt-1.5 max-w-2xl leading-relaxed">
               Kini Anda memiliki hak akses penuh untuk menambah, mengubah, dan menghapus konten seluruh bagian website sekolah. Semua perubahan tersinkronisasi otomatis secara real-time ke Cloud Firestore.

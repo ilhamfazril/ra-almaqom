@@ -35,8 +35,13 @@ function cleanCampusTerms(obj: any): any {
       .replace(/halaman kampus sekolah/gi, 'halaman sekolah')
       .replace(/halaman kampus/gi, 'halaman sekolah')
       .replace(/kampus sekolah/gi, 'sekolah')
-      .replace(/kampus MTs Fatahillah/gi, 'MTs Fatahillah')
-      .replace(/Kampus MTs Fatahillah/gi, 'MTs Fatahillah');
+      .replace(/kampus MTs Fatahillah/gi, 'RA Al-Maqom')
+      .replace(/Kampus MTs Fatahillah/gi, 'RA Al-Maqom')
+      .replace(/MTs Fatahillah Cimahi/gi, 'RA Al-Maqom')
+      .replace(/MTs Fatahillah/gi, 'RA Al-Maqom')
+      .replace(/MTS FATAHILLAH/gi, 'RA AL-MAQOM')
+      .replace(/Yayasan Fatahillah Cimahi/gi, 'Yayasan Al-Maqom')
+      .replace(/Yayasan Fatahillah/gi, 'Yayasan Al-Maqom');
   }
   if (Array.isArray(obj)) {
     return obj.map(cleanCampusTerms);
@@ -335,7 +340,7 @@ async function start() {
   }
 
   app.listen(PORT, '0.0.0.0', () => {
-    console.log(`MTs Fatahillah Cimahi Server running on http://0.0.0.0:${PORT}`);
+    console.log(`RA Al-Maqom Server running on http://0.0.0.0:${PORT}`);
   });
 }
 

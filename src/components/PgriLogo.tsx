@@ -5,23 +5,26 @@ interface PgriLogoProps {
   className?: string;
   size?: number;
   showBadgeBorder?: boolean;
+  withWhiteBg?: boolean;
 }
 
 /**
- * School Logo Component (MTs Fatahillah Cimahi)
+ * School Logo Component (RA Al-Maqom)
  * Maintains backwards compatibility for existing imports while rendering
- * the official MTs Fatahillah Cimahi emblem without outer black background.
+ * the official RA Al-Maqom emblem.
  */
 export const PgriLogo: React.FC<PgriLogoProps> = ({ 
   className = '', 
   size = 48,
-  showBadgeBorder = false
+  showBadgeBorder = false,
+  withWhiteBg = false,
 }) => {
   return (
     <SchoolLogo
       className={className}
       size={size}
       showBadgeBorder={showBadgeBorder}
+      withWhiteBg={withWhiteBg}
     />
   );
 };

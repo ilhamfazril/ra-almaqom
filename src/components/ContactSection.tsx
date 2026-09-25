@@ -56,7 +56,7 @@ export const ContactSection: React.FC = () => {
             <span>Pusat Informasi & Konsultasi</span>
           </div>
           <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Hubungi <span className="text-emerald-700">MTs Fatahillah Cimahi</span>
+            Hubungi <span className="text-emerald-700">RA Al-Maqom</span>
           </h2>
           <p className="mt-3 text-slate-600 text-base sm:text-lg">
             Kami siap melayani pertanyaan seputar penerimaan peserta didik baru (PPDB), kurikulum, fasilitas, atau kunjungan sekolah.
@@ -122,25 +122,53 @@ export const ContactSection: React.FC = () => {
               </div>
             </div>
 
-            {/* Quick Map preview card */}
-            <div className="bg-slate-900 text-white p-6 rounded-3xl shadow-lg relative overflow-hidden">
-              <div className="relative z-10">
-                <div className="text-amber-400 text-xs font-bold uppercase tracking-wider mb-1">
-                  Lokasi Sekolah
+            {/* Official Interactive Google Maps Card */}
+            <div className="bg-slate-900 text-white rounded-3xl shadow-xl overflow-hidden border border-slate-800 flex flex-col">
+              <div className="p-5 sm:p-6 pb-4">
+                <div className="flex items-center justify-between mb-1.5">
+                  <span className="text-amber-400 text-xs font-extrabold uppercase tracking-wider flex items-center gap-1.5">
+                    <MapPin className="w-3.5 h-3.5 text-amber-400" />
+                    Lokasi Kampus RA Al-Maqom
+                  </span>
+                  <span className="text-[11px] font-semibold text-emerald-300 bg-emerald-950 border border-emerald-700/60 px-2.5 py-0.5 rounded-full">
+                    Cimahi Utara
+                  </span>
                 </div>
-                <h4 className="text-base font-bold text-white mb-2">
-                  Cigugur Tengah, Cimahi Tengah
+                <h4 className="text-base sm:text-lg font-bold text-white leading-snug">
+                  Cibabat, Cimahi Utara — Kota Cimahi
                 </h4>
-                <p className="text-xs text-slate-300 leading-relaxed mb-4">
-                  Berlokasi di Jl. Cigugur Tengah No. 45, sangat strategis dan mudah diakses dari pusat Kota Cimahi dan kawasan sekitarnya.
+                <p className="text-xs text-slate-300 leading-relaxed mt-1">
+                  Jl. Pesantren VI No. 225, RT 06/RW 15, Kel. Cibabat, Kec. Cimahi Utara, Kota Cimahi (Komplek Masjid & Yayasan Al-Maqom).
                 </p>
+              </div>
+
+              {/* Embedded Interactive Google Map */}
+              <div className="relative w-full h-56 sm:h-64 bg-slate-800">
+                <iframe
+                  title="Peta Lokasi Resmi RA Al-Maqom Cimahi"
+                  src="https://maps.google.com/maps?q=Jl.+Pesantren+VI+No.225,+Cibabat,+Kec.+Cimahi+Utara,+Kota+Cimahi,+Jawa+Barat+40513&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen={false}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="w-full h-full grayscale-[10%] contrast-105"
+                />
+              </div>
+
+              {/* Action Button */}
+              <div className="p-4 sm:p-5 bg-slate-950/90 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-3">
+                <div className="text-[11px] text-slate-400">
+                  Navigasi instan via Google Maps & Waze
+                </div>
                 <a
-                  href="https://maps.google.com/?q=MTs+Fatahillah+Cimahi+Jl+Cigugur+Tengah+No+45"
+                  href={`https://maps.google.com/?q=${encodeURIComponent('RA Al-Maqom Jl. Pesantren VI No.225 Cibabat Cimahi Utara')}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-300 hover:text-white underline underline-offset-4"
+                  className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 text-xs font-bold transition-all shadow-sm shrink-0"
                 >
-                  <span>Buka di Google Maps</span>
+                  <span>Buka Petunjuk Arah</span>
                   <ExternalLink className="w-3.5 h-3.5" />
                 </a>
               </div>
@@ -164,7 +192,7 @@ export const ContactSection: React.FC = () => {
                   </div>
                   <h4 className="text-base font-bold text-slate-900">Pesan Anda Berhasil Terkirim!</h4>
                   <p className="text-xs text-slate-600 mt-1 max-w-sm mx-auto">
-                    Tim Tata Usaha & Humas MTs Fatahillah Cimahi akan menindaklanjuti pesan Anda melalui email atau telepon dalam waktu 1x24 jam kerja.
+                    Tim Tata Usaha & Humas RA Al-Maqom akan menindaklanjuti pesan Anda melalui email atau telepon dalam waktu 1x24 jam kerja.
                   </p>
                 </div>
               ) : (

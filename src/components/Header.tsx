@@ -23,7 +23,7 @@ import {
   Newspaper
 } from 'lucide-react';
 import { SCHOOL_INFO } from '../data/schoolData';
-import { PgriLogo } from './PgriLogo';
+import { SchoolLogo } from './SchoolLogo';
 
 interface HeaderProps {
   activeTab: string;
@@ -148,28 +148,28 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={() => handleNavClick('beranda')}
             className="flex items-center gap-2.5 sm:gap-3.5 cursor-pointer group min-w-0"
           >
-            {/* Official MTs Fatahillah Vector Logo */}
+            {/* Official RA Al-Maqom Vector Logo */}
             <div className="relative group-hover:scale-105 transition-transform duration-300 shrink-0">
-              <PgriLogo className="w-10 h-10 sm:w-[50px] sm:h-[50px]" size={50} />
+              <SchoolLogo className="w-10 h-10 sm:w-[50px] sm:h-[50px]" size={50} />
             </div>
 
             <div className="flex flex-col justify-center min-w-0">
-              {/* Title: 1 jajar penuh "MTs Fatahillah Cimahi" */}
+              {/* Title: 1 jajar penuh "RA Al-Maqom" */}
               <div className="flex items-center leading-none">
                 <span className="text-[15px] xs:text-[16px] sm:text-2xl font-black text-slate-900 tracking-tight group-hover:text-emerald-800 transition-colors whitespace-nowrap">
-                  MTs Fatahillah Cimahi
+                  RA Al-Maqom
                 </span>
               </div>
 
               {/* Subtitle / Slogan */}
               <div className="flex items-center gap-1.5 text-[10px] sm:text-xs font-semibold mt-1 leading-none">
                 <span className="text-emerald-800 font-bold sm:font-extrabold tracking-wide uppercase truncate">
-                  <span className="inline sm:hidden">Islami • Cerdas • Berakhlak</span>
-                  <span className="hidden sm:inline">ISLAMI • CERDAS • BERAKHLAKUL KARIMAH</span>
+                  <span className="inline sm:hidden">Ceria • Cerdas • Berakhlak</span>
+                  <span className="hidden sm:inline">CERIA • ISLAMI • CERDAS • BERAKHLAKUL KARIMAH</span>
                 </span>
                 <span className="text-slate-300 hidden md:inline">|</span>
                 <span className="hidden md:inline text-slate-600 font-normal">
-                  Yayasan Fatahillah Cimahi
+                  Yayasan Al-Maqom
                 </span>
               </div>
             </div>
@@ -527,7 +527,7 @@ export const Header: React.FC<HeaderProps> = ({
             <div className="bg-gradient-to-r from-emerald-800 to-teal-800 text-white rounded-2xl p-3.5 shadow-sm">
               <div className="flex items-center gap-2">
                 <GraduationCap className="w-5 h-5 text-amber-300" />
-                <div className="text-xs font-bold">PPDB 2027/2028 MTS FATAHILLAH CIMAHI</div>
+                <div className="text-xs font-bold">PPDB 2027/2028 RA AL-MAQOM</div>
               </div>
               <p className="text-[11px] text-emerald-100 mt-1">
                 Penerimaan Peserta Didik Baru telah dibuka. Biaya terjangkau & fasilitas lengkap.

@@ -18,7 +18,7 @@ export const NewsDetailModal: React.FC<NewsDetailModalProps> = ({ article, onClo
         <div className="p-4 border-b border-slate-100 flex items-center justify-between bg-slate-50">
           <div className="flex items-center gap-2 text-xs font-bold text-emerald-800">
             <span className="bg-emerald-100 px-2.5 py-0.5 rounded-full">{article.category}</span>
-            <span>MTs Fatahillah Cimahi</span>
+            <span>RA Al-Maqom</span>
           </div>
           <button
             onClick={onClose}
@@ -77,7 +77,7 @@ export const NewsDetailModal: React.FC<NewsDetailModalProps> = ({ article, onClo
           <div className="pt-6 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4">
             <div className="flex items-center gap-2 text-xs text-slate-500">
               <Tag className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Kategori: {article.category} • Info Resmi MTs Fatahillah Cimahi</span>
+              <span>Kategori: {article.category} • Info Resmi RA Al-Maqom</span>
             </div>
 
             <button

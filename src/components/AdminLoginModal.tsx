@@ -10,7 +10,7 @@ import {
   EyeOff
 } from 'lucide-react';
 import { loginAdmin } from '../services/adminAuthService';
-import { PgriLogo } from './PgriLogo';
+import { SchoolLogo } from './SchoolLogo';
 
 interface AdminLoginModalProps {
   isOpen: boolean;
@@ -66,7 +66,7 @@ export const AdminLoginModal: React.FC<AdminLoginModalProps> = ({
           </button>
 
           <div className="flex items-center gap-3 mb-3">
-            <PgriLogo size={52} />
+            <SchoolLogo size={52} withWhiteBg />
             <div className="w-10 h-10 rounded-2xl bg-amber-400 text-slate-950 flex items-center justify-center shadow-lg">
               <Lock className="w-5 h-5" />
             </div>
@@ -74,7 +74,7 @@ export const AdminLoginModal: React.FC<AdminLoginModalProps> = ({
 
           <h3 className="text-xl font-black tracking-tight">Masuk Akun Admin</h3>
           <p className="text-xs text-emerald-100 mt-1">
-            Portal otorisasi khusus Administrator MTs Fatahillah Cimahi untuk merubah teks & foto slide real-time.
+            Portal otorisasi khusus Administrator RA Al-Maqom untuk merubah teks & foto slide real-time.
           </p>
         </div>
 
@@ -158,7 +158,7 @@ export const AdminLoginModal: React.FC<AdminLoginModalProps> = ({
         {/* Footer info */}
         <div className="px-6 py-3.5 bg-slate-50 border-t border-slate-100 text-center">
           <p className="text-[11px] text-slate-500 font-medium">
-            Akses dibatasi hanya untuk staf administrasi terverifikasi MTs Fatahillah Cimahi.
+            Akses dibatasi hanya untuk staf administrasi terverifikasi RA Al-Maqom.
           </p>
         </div>
       </div>

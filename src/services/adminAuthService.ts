@@ -3,8 +3,8 @@ const ADMIN_CREDENTIALS = {
   password: 'ilhamfazril',
 };
 
-const AUTH_STORAGE_KEY = 'mts_fatahillah_admin_session';
-const LEGACY_AUTH_STORAGE_KEY = 'smp_pgri_5_admin_session';
+const AUTH_STORAGE_KEY = 'ra_almaqom_admin_session';
+const LEGACY_AUTH_STORAGE_KEY = 'mts_fatahillah_admin_session';
 
 export interface AdminSession {
   username: string;

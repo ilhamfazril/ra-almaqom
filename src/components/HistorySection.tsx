@@ -6,23 +6,23 @@ export const HistorySection: React.FC = () => {
   const milestones = [
     {
       year: 'Pendirian Awal',
-      title: 'Kiprah Pengabdian Yayasan Fatahillah di Kota Cimahi',
-      desc: 'Bermula dari komitmen para pendidik dan tokoh masyarakat muslim di bawah naungan Yayasan Fatahillah untuk menyediakan pendidikan madrasah tsanawiyah yang bernuansa islami, terjangkau, dan berkarakter mulia bagi putra-putri di Cimahi Tengah.'
+      title: 'Kiprah Pengabdian Yayasan Al-Maqom untuk Generasi Usia Dini',
+      desc: 'Bermula dari komitmen para pendidik dan tokoh masyarakat muslim di bawah naungan Yayasan Al-Maqom untuk menyediakan pendidikan Raudhatul Athfal (RA) bernuansa Islami, berkualitas, dan penuh kasih sayang bagi tunas bangsa.'
     },
     {
       year: 'Pengembangan Sarana',
-      title: 'Pembangunan Gedung & Fasilitas Sekolah',
-      desc: 'Pengembangan bertahap sarana dan prasarana madrasah di Jl. Cigugur Tengah No. 45, dilengkapi ruang kelas yang nyaman, musholla, lapangan upacara/olahraga, ruang guru, dan perpustakaan.'
+      title: 'Pembangunan Gedung & Arena Bermain Ramah Anak',
+      desc: 'Pengembangan bertahap fasilitas sarana pembelajaran tematik ber-AC, musala cilik untuk sholat dhuha, taman bermain outdoor (playground) berumput sintetis yang aman, serta pojok literasi bergambar.'
     },
     {
-      year: 'Fasilitas Komputer',
-      title: 'Pembangunan Laboratorium Komputer & Kesiapan ANBK',
-      desc: 'Pengadaan sarana laboratorium komputer terpadu dengan puluhan PC desktop siap pakai, memudahkan siswa dalam simulasi dan pelaksanaan Asesmen Nasional Berbasis Komputer (ANBK) serta literasi teknologi digital.'
+      year: 'Program Unggulan',
+      title: 'Penguatan Tahfidz Cilik & Metode Bermain Sambil Belajar',
+      desc: 'Penerapan metode talaqqi interaktif untuk hafalan juz 30, doa keseharian, adab sopan santun 5S, serta kegiatan ekstrakurikuler drumband cilik, seni tari Islami, dan melukis kreatif.'
     },
     {
       year: 'Masa Kini',
-      title: 'Implementasi Kurikulum Merdeka & Penguatan Karakter',
-      desc: 'Menerapkan Kurikulum Merdeka dengan fokus pada Projek Penguatan Profil Pelajar Pancasila (P5), pembiasaan sholat dhuha dan tadarus rutin, kepramukaan aktif, dan pembinaan budi pekerti luhur.'
+      title: 'Implementasi Kurikulum Merdeka PAUD & Profil Pelajar Pancasila',
+      desc: 'Mengintegrasikan Kurikulum Merdeka PAUD/RA dengan penguatan P5P2RA (Profil Pelajar Rahmatan Lil Alamin), stimulasi kecerdasan majemuk, serta kemitraan parenting aktif bersama orang tua.'
     }
   ];
 
@@ -37,10 +37,10 @@ export const HistorySection: React.FC = () => {
             <span>Kilas Sejarah</span>
           </div>
           <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Perjalanan Sejarah <span className="text-emerald-700">MTs Fatahillah Cimahi</span>
+            Perjalanan Sejarah <span className="text-emerald-700">{SCHOOL_INFO.name}</span>
           </h2>
           <p className="mt-3 text-slate-600 text-base sm:text-lg">
-            Dedikasi mengabdi membina tunas bangsa yang beriman, cerdas, berdisiplin, dan berakhlak mulia di Kota Cimahi, Jawa Barat.
+            Dedikasi mengabdi membina tunas bangsa yang beriman, cerdas, mandiri, dan berakhlakul karimah di bawah naungan Yayasan Al-Maqom.
           </p>
         </div>
 

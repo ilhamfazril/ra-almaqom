@@ -120,10 +120,10 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
             <span>Pilar Keunggulan Akademik</span>
           </div>
           <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Informasi & Program Akademik <span className="text-emerald-700">MTs Fatahillah Cimahi</span>
+            Informasi & Program Pendidikan <span className="text-emerald-700">RA Al-Maqom</span>
           </h2>
           <p className="mt-3 text-slate-600 text-sm sm:text-base">
-            Pilih sub-kategori di bawah ini untuk melihat kurikulum merdeka, kesiapan asesmen digital (ANBK), serta pembiasaan karakter budi pekerti secara terstruktur.
+            Pilih sub-kategori di bawah ini untuk melihat kurikulum merdeka PAUD, bimbingan tahfidz cilik & doa harian, serta pembiasaan karakter budi pekerti secara terstruktur.
           </p>
         </div>
 
@@ -197,7 +197,7 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
                     Pembelajaran Berdiferensiasi & Projek Penguatan Profil Pelajar Pancasila (P5)
                   </h3>
                   <p className="mt-2 text-slate-600 text-xs sm:text-sm leading-relaxed">
-                    MTs Fatahillah Cimahi mengimplementasikan Kurikulum Merdeka dengan pendekatan mandiri yang memberi keleluasaan kepada pendidik untuk merancang pembelajaran sesuai kebutuhan murid, minat, dan potensi daerah Jawa Barat.
+                    RA Al-Maqom mengimplementasikan Kurikulum Merdeka PAUD/RA dengan pendekatan berpusat pada anak yang memberi ruang eksplorasi, bermain sambil belajar, dan penguatan nilai-nilai Islami.
                   </p>
                 </div>
 
@@ -265,7 +265,7 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
                     Kesiapan Laboratorium CBT Mandiri & Penguasaan Literasi Digital
                   </h3>
                   <p className="mt-2 text-slate-600 text-xs sm:text-sm leading-relaxed">
-                    MTs Fatahillah Cimahi siap menyelenggarakan Ujian Asesmen Nasional Berbasis Komputer (ANBK) secara mandiri dengan puluhan unit komputer desktop berpendingin udara dan proktor berpengalaman.
+                    RA Al-Maqom menghadirkan fasilitas pengenalan literasi digital dan multimedia interaktif anak usia dini dengan suasana belajar berpendingin udara dan ramah anak.
                   </p>
                 </div>
 
@@ -333,7 +333,7 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
                     Pembiasaan Ibadah Harian, Budaya 5S Santun, dan Kepanduan Disiplin
                   </h3>
                   <p className="mt-2 text-slate-600 text-xs sm:text-sm leading-relaxed">
-                    Pendidikan di MTs Fatahillah Cimahi menyeimbangkan kecerdasan intelektual dengan kematangan spiritual. Nilai-nilai keteladanan, rasa hormat, dan kedisiplinan ditanamkan sejak gerbang sekolah dibuka.
+                    Pendidikan di RA Al-Maqom menyeimbangkan keceriaan masa kecil dengan kematangan spiritual. Nilai-nilai keteladanan, rasa hormat, adab makan/minum, dan doa harian ditanamkan dengan penuh kasih sayang.
                   </p>
                 </div>
 
@@ -401,7 +401,7 @@ export const ProgramsSection: React.FC<ProgramsSectionProps> = ({
                     Sinergi Kurikulum Merdeka, Literasi Digital, dan Karakter Religius
                   </h3>
                   <p className="mt-2 text-slate-600 text-xs sm:text-sm leading-relaxed">
-                    Di MTs Fatahillah Cimahi, kami mengintegrasikan 3 dimensi pembelajaran: penguasaan akademik berbasis kurikulum mandiri, kecakapan teknologi asesmen CBT, serta keteladanan budi pekerti budak Sunda yang santun dan bertakwa.
+                    Di RA Al-Maqom, kami mengintegrasikan 3 dimensi pembelajaran: stimulasi perkembangan anak berbasis kurikulum merdeka, sarana pembelajaran aktif yang menyenangkan, serta pembiasaan adab dan akhlakul karimah.
                   </p>
                 </div>
 

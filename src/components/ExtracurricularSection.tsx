@@ -133,24 +133,24 @@ export const ExtracurricularSection: React.FC<ExtracurricularSectionProps> = ({ 
           ))}
         </div>
 
-        {/* OSIS & MPK Callout */}
+        {/* Parenting & Komite Callout */}
         <div className="mt-14 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-lg flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-4">
             <div className="w-14 h-14 rounded-2xl bg-amber-400 text-slate-950 flex items-center justify-center font-black text-xl shadow flex-shrink-0">
-              OSIS
+              RA
             </div>
             <div>
               <h4 className="text-base sm:text-lg font-bold text-slate-900">
-                Organisasi Siswa Intra Sekolah (OSIS & MPK) MTs Fatahillah Cimahi
+                Komite Parenting & Paguyuban Orang Tua RA Al-Maqom
               </h4>
               <p className="text-xs sm:text-sm text-slate-600 mt-1">
-                Wadah pembelajaran kepemimpinan, kedisiplinan, kekeluargaan, serta keaktifan siswa dalam berbagai kegiatan kesiswaan dan hari besar nasional/keagamaan.
+                Wadah kolaborasi harmonis antara guru dan orang tua murid dalam mendampingi tumbuh kembang, stimulasi motorik, dan pembiasaan adab Islami ananda.
               </p>
             </div>
           </div>
           <div className="flex-shrink-0">
             <span className="bg-emerald-100 text-emerald-800 text-xs font-bold px-4 py-2 rounded-xl">
-              100% Diinisiasi & Dipimpin Siswa
+              Sinergi Keluarga & Madrasah
             </span>
           </div>
         </div>

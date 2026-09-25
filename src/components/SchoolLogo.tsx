@@ -4,395 +4,125 @@ interface SchoolLogoProps {
   className?: string;
   size?: number;
   showBadgeBorder?: boolean;
+  withWhiteBg?: boolean;
 }
 
 /**
- * Official Emblem for MTs Fatahillah Cimahi
- * - 100% matched to the official Madrasah emblem shape (Perisai Cembung Segi Empat Bulat / Rounded Barrel-Shield)
- * - Zero black background (clean transparent outside the shield)
- * - High-definition crystal-clear typography:
- *     - "TSANAWIYAH" (arched along top)
- *     - "MADRASAH" (curved along left side from top to bottom)
- *     - "FATAHILLAH" (curved along right side from top to bottom)
- *     - "CIMAHI" (curved upright along bottom)
- * - Symmetrical Golden Wings (Sayap Api Kuning Emas), White Pen (Kalam),
- *   Open Qur'an (Kitab Suci), Crossed Stand (Silang Rehal), and Ribbon with "AN-NUR".
+ * Official Logo Component for RA Al-Maqom (Raudhatul Athfal Al-Maqom)
+ * Faithfully matches the official school emblem:
+ * - Arched top typography: "RAUDHATUL ATHFAL"
+ * - Stylized green mosque dome emblem forming the Arabic calligraphy "Al-Maqom" (المقام):
+ *     - Outer dome canopy and inner vault ribs
+ *     - Two dots of the letter Qaf (ق)
+ *     - Central finial droplet with white center eye
+ *     - Flowing calligraphy curves representing 'Alif-Lam' and 'Mim'
+ *     - Solid horizontal grounding base bar
+ * - Bottom serif typography: "AL-MAQOM"
+ * - Official emerald green color: #009B4D
  */
 export const SchoolLogo: React.FC<SchoolLogoProps> = ({
   className = '',
-  size = 54,
+  size = 52,
   showBadgeBorder = false,
+  withWhiteBg = false,
 }) => {
   const rawId = useId();
   const safeId = rawId.replace(/[^a-zA-Z0-9_-]/g, '');
-  const shieldGradId = `shieldBlueGrad_${safeId}`;
-  const wingsGradId = `wingsYellowGrad_${safeId}`;
+  const archPathId = `almaqom_arch_${safeId}`;
 
   const hasExplicitSizeInClass = className.includes('w-') || className.includes('h-');
 
   return (
     <div
-      className={`relative inline-flex items-center justify-center flex-shrink-0 select-none overflow-visible ${
-        showBadgeBorder ? 'p-1 rounded-2xl bg-white/10 ring-1 ring-white/20 shadow-sm' : ''
+      className={`relative inline-flex items-center justify-center flex-shrink-0 select-none overflow-visible transition-transform ${
+        withWhiteBg 
+          ? 'p-1 rounded-2xl bg-white shadow-sm ring-1 ring-slate-200/60' 
+          : showBadgeBorder 
+            ? 'p-1 rounded-2xl bg-white/10 ring-1 ring-white/20 shadow-sm' 
+            : ''
       } ${className}`}
       style={hasExplicitSizeInClass ? undefined : { width: size, height: size }}
-      title="Logo Resmi MTs Fatahillah Cimahi"
+      title="Logo Resmi RA Al-Maqom"
     >
       <svg
-        viewBox="0 0 1000 1000"
-        className="w-full h-full drop-shadow-md overflow-visible"
+        viewBox="0 0 500 500"
+        className="w-full h-full drop-shadow-xs overflow-visible"
         xmlns="http://www.w3.org/2000/svg"
         shapeRendering="geometricPrecision"
         textRendering="geometricPrecision"
       >
         <defs>
-          <linearGradient id={shieldGradId} x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#0060CA" />
-            <stop offset="50%" stopColor="#0055B8" />
-            <stop offset="100%" stopColor="#004AA4" />
-          </linearGradient>
-
-          <linearGradient id={wingsGradId} x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#FFF018" />
-            <stop offset="60%" stopColor="#FFDE00" />
-            <stop offset="100%" stopColor="#EAA600" />
-          </linearGradient>
+          {/* Curve path for arched top text: RAUDHATUL ATHFAL */}
+          <path id={archPathId} d="M 50,230 A 215,215 0 0,1 450,230" fill="none" />
         </defs>
 
-        <g>
-          {/* 1. Outer Royal Blue Barrel-Shield Contour (Perisai Cembung Segi Empat Bulat) */}
-          <path
-            d="M 500,95
-               C 610,95 710,115 770,140
-               C 815,160 840,185 845,230
-               C 855,320 865,420 865,490
-               C 865,560 855,660 845,750
-               C 840,795 815,820 760,845
-               C 700,870 600,885 500,885
-               C 400,885 300,870 240,845
-               C 185,820 160,795 155,750
-               C 145,660 135,560 135,490
-               C 135,420 145,320 155,230
-               C 160,185 185,160 230,140
-               C 290,115 390,95 500,95 Z"
-            fill={`url(#${shieldGradId})`}
-            stroke="#003D88"
-            strokeWidth="5"
-          />
+        {/* Arched Top Text: RAUDHATUL ATHFAL */}
+        <text 
+          fill="#009B4D" 
+          fontFamily="'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, Arial, sans-serif" 
+          fontWeight="900" 
+          fontSize="34" 
+          letterSpacing="3.5"
+        >
+          <textPath href={`#${archPathId}`} startOffset="50%" textAnchor="middle">
+            RAUDHATUL ATHFAL
+          </textPath>
+        </text>
 
-          {/* Thin Crisp White Outer Trim Accent */}
-          <path
-            d="M 500,103
-               C 606,103 704,122 763,146
-               C 807,166 831,189 836,233
-               C 846,321 856,420 856,490
-               C 856,559 846,658 836,747
-               C 831,791 807,814 753,838
-               C 695,862 597,877 500,877
-               C 403,877 305,862 247,838
-               C 193,814 169,791 164,747
-               C 154,658 144,559 144,490
-               C 144,420 154,321 164,233
-               C 169,189 193,166 237,146
-               C 296,122 394,103 500,103 Z"
-            fill="none"
-            stroke="#FFFFFF"
-            strokeWidth="2.5"
-            strokeOpacity="0.9"
-          />
+        {/* Central Mosque Dome & Calligraphy Emblem (المقام) */}
+        <g fill="#009B4D">
+          {/* Outer Dome Canopy Arch */}
+          <path d="M 52,320 C 60,285 86,242 120,210 C 158,175 204,156 250,150 C 296,156 342,175 380,210 C 414,242 440,285 448,320 L 434,320 C 426,288 402,248 370,218 C 334,185 292,168 250,162 C 208,168 166,185 130,218 C 98,248 74,288 66,320 Z" />
 
-          {/* 2. Crisp, Bold Typography Around Rim */}
-          {/* Top: "TSANAWIYAH" */}
-          <g id="compTextTsanawiyah">
-            <text x="275.0" y="168.0" transform="rotate(-13.0, 275.0, 168.0)" fill="#FFFFFF" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="900" fontSize="48" textAnchor="middle" dominantBaseline="central">T</text>
-            <text x="325.0" y="156.4" transform="rotate(-10.1, 325.0, 156.4)" fill="#FFFFFF" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="900" fontSize="48" textAnchor="middle" dominantBaseline="central">S</text>
-            <text x="375.0" y="146.1" transform="rotate(-7.2, 375.0, 146.1)" fill="#FFFFFF" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="900" fontSize="48" textAnchor="middle" dominantBaseline="central">A</text>
-            <text x="425.0" y="138.6" transform="rotate(-4.3, 425.0, 138.6)" fill="#FFFFFF" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="900" fontSize="48" textAnchor="middle" dominantBaseline="central">N</text>
-            <text x="475.0" y="134.5" transform="rotate(-1.4, 475.0, 134.5)" fill="#FFFFFF" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="900" fontSize="48" textAnchor="middle" dominantBaseline="central">A</text>
-            <text x="525.0" y="134.5" transform="rotate(1.4, 525.0, 134.5)" fill="#FFFFFF" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="900" fontSize="48" textAnchor="middle" dominantBaseline="central">W</text>
-            <text x="575.0" y="138.6" transform="rotate(4.3, 575.0, 138.6)" fill="#FFFFFF" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="900" fontSize="48" textAnchor="middle" dominantBaseline="central">I</text>
-            <text x="625.0" y="146.1" transform="rotate(7.2, 625.0, 146.1)" fill="#FFFFFF" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="900" fontSize="48" textAnchor="middle" dominantBaseline="central">Y</text>
-            <text x="675.0" y="156.4" transform="rotate(10.1, 675.0, 156.4)" fill="#FFFFFF" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="900" fontSize="48" textAnchor="middle" dominantBaseline="central">A</text>
-            <text x="725.0" y="168.0" transform="rotate(13.0, 725.0, 168.0)" fill="#FFFFFF" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="900" fontSize="48" textAnchor="middle" dominantBaseline="central">H</text>
-          </g>
+          {/* Inner Parallel Dome Rib */}
+          <path d="M 88,320 C 96,294 116,260 144,234 C 174,206 210,190 250,184 C 290,190 326,206 356,234 C 384,260 404,294 412,320 L 400,320 C 392,296 374,265 348,241 C 320,215 287,200 250,194 C 213,200 180,215 152,241 C 126,265 108,296 100,320 Z" />
 
-          {/* Left: "MADRASAH" (Top to Bottom Along Left Curve) */}
-          <g id="compTextMadrasah">
-            <text x="190.0" y="265.0" transform="rotate(-98.0, 190.0, 265.0)" fill="#FFFFFF" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="900" fontSize="44" textAnchor="middle" dominantBaseline="central">M</text>
-            <text x="177.0" y="329.3" transform="rotate(-95.7, 177.0, 329.3)" fill="#FFFFFF" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="900" fontSize="44" textAnchor="middle" dominantBaseline="central">A</text>
-            <text x="166.5" y="393.6" transform="rotate(-93.4, 166.5, 393.6)" fill="#FFFFFF" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="900" fontSize="44" textAnchor="middle" dominantBaseline="central">D</text>
-            <text x="160.8" y="457.9" transform="rotate(-91.1, 160.8, 457.9)" fill="#FFFFFF" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="900" fontSize="44" textAnchor="middle" dominantBaseline="central">R</text>
-            <text x="160.8" y="522.1" transform="rotate(-88.9, 160.8, 522.1)" fill="#FFFFFF" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="900" fontSize="44" textAnchor="middle" dominantBaseline="central">A</text>
-            <text x="166.5" y="586.4" transform="rotate(-86.6, 166.5, 586.4)" fill="#FFFFFF" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="900" fontSize="44" textAnchor="middle" dominantBaseline="central">S</text>
-            <text x="177.0" y="650.7" transform="rotate(-84.3, 177.0, 650.7)" fill="#FFFFFF" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="900" fontSize="44" textAnchor="middle" dominantBaseline="central">A</text>
-            <text x="190.0" y="715.0" transform="rotate(-82.0, 190.0, 715.0)" fill="#FFFFFF" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="900" fontSize="44" textAnchor="middle" dominantBaseline="central">H</text>
-          </g>
+          {/* Two Dots of the letter Qaf (ق) */}
+          <circle cx="233" cy="214" r="11.5" />
+          <circle cx="267" cy="214" r="11.5" />
 
-          {/* Right: "FATAHILLAH" (Top to Bottom Along Right Curve) */}
-          <g id="compTextFatahillah">
-            <text x="810.0" y="250.0" transform="rotate(82.0, 810.0, 250.0)" fill="#FFFFFF" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="900" fontSize="42" textAnchor="middle" dominantBaseline="central">F</text>
-            <text x="820.3" y="303.3" transform="rotate(83.8, 820.3, 303.3)" fill="#FFFFFF" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="900" fontSize="42" textAnchor="middle" dominantBaseline="central">A</text>
-            <text x="829.3" y="356.7" transform="rotate(85.6, 829.3, 356.7)" fill="#FFFFFF" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="900" fontSize="42" textAnchor="middle" dominantBaseline="central">T</text>
-            <text x="836.0" y="410.0" transform="rotate(87.3, 836.0, 410.0)" fill="#FFFFFF" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="900" fontSize="42" textAnchor="middle" dominantBaseline="central">A</text>
-            <text x="839.5" y="463.3" transform="rotate(89.1, 839.5, 463.3)" fill="#FFFFFF" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="900" fontSize="42" textAnchor="middle" dominantBaseline="central">H</text>
-            <text x="839.5" y="516.7" transform="rotate(90.9, 839.5, 516.7)" fill="#FFFFFF" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="900" fontSize="42" textAnchor="middle" dominantBaseline="central">I</text>
-            <text x="836.0" y="570.0" transform="rotate(92.7, 836.0, 570.0)" fill="#FFFFFF" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="900" fontSize="42" textAnchor="middle" dominantBaseline="central">L</text>
-            <text x="829.3" y="623.3" transform="rotate(94.4, 829.3, 623.3)" fill="#FFFFFF" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="900" fontSize="42" textAnchor="middle" dominantBaseline="central">L</text>
-            <text x="820.3" y="676.7" transform="rotate(96.2, 820.3, 676.7)" fill="#FFFFFF" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="900" fontSize="42" textAnchor="middle" dominantBaseline="central">A</text>
-            <text x="810.0" y="730.0" transform="rotate(98.0, 810.0, 730.0)" fill="#FFFFFF" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="900" fontSize="42" textAnchor="middle" dominantBaseline="central">H</text>
-          </g>
+          {/* Central Qaf Finial / Droplet Motif */}
+          <path d="M 250,226 C 250,226 235,252 235,273 C 235,286 242,298 250,298 C 258,298 265,286 265,273 C 265,252 250,226 250,226 Z" />
+          {/* White Eye of Qaf */}
+          <circle cx="250" cy="273" r="6.5" fill="#ffffff" />
 
-          {/* Bottom: "C I M A H I" (Upright Curved) */}
-          <g id="compTextCimahi">
-            <text x="300.0" y="824.0" transform="rotate(9.0, 300.0, 824.0)" fill="#FFFFFF" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="900" fontSize="56" textAnchor="middle" dominantBaseline="central">C</text>
-            <text x="380.0" y="839.3" transform="rotate(5.4, 380.0, 839.3)" fill="#FFFFFF" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="900" fontSize="56" textAnchor="middle" dominantBaseline="central">I</text>
-            <text x="460.0" y="848.7" transform="rotate(1.8, 460.0, 848.7)" fill="#FFFFFF" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="900" fontSize="56" textAnchor="middle" dominantBaseline="central">M</text>
-            <text x="540.0" y="848.7" transform="rotate(-1.8, 540.0, 848.7)" fill="#FFFFFF" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="900" fontSize="56" textAnchor="middle" dominantBaseline="central">A</text>
-            <text x="620.0" y="839.3" transform="rotate(-5.4, 620.0, 839.3)" fill="#FFFFFF" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="900" fontSize="56" textAnchor="middle" dominantBaseline="central">H</text>
-            <text x="700.0" y="824.0" transform="rotate(-9.0, 700.0, 824.0)" fill="#FFFFFF" fontFamily="'Plus Jakarta Sans', Arial, sans-serif" fontWeight="900" fontSize="56" textAnchor="middle" dominantBaseline="central">I</text>
-          </g>
+          {/* Connecting Vertical Stem */}
+          <rect x="244" y="296" width="12" height="24" rx="2" />
 
-          {/* 3. Inner White Border */}
-          <path
-            d="M 500,185
-               C 585,185 665,202 715,225
-               C 750,242 770,265 774,305
-               C 782,380 788,445 788,490
-               C 788,540 782,605 774,675
-               C 770,715 750,740 705,765
-               C 655,788 575,800 500,800
-               C 425,800 345,788 295,765
-               C 250,740 230,715 226,675
-               C 218,605 212,540 212,490
-               C 212,445 218,380 226,305
-               C 230,265 250,242 285,225
-               C 335,202 415,185 500,185 Z"
-            fill="none"
-            stroke="#FFFFFF"
-            strokeWidth="12"
-            strokeLinejoin="round"
-          />
+          {/* Left Arabic Calligraphic Form ('Alif-Lam') */}
+          <path d="M 68,320 C 70,285 92,256 122,242 C 142,232 160,235 166,248 C 172,261 166,277 156,292 C 148,304 138,314 132,320 L 118,320 C 126,312 136,300 142,290 C 148,278 152,266 148,258 C 144,250 132,247 116,256 C 94,268 78,292 78,320 Z" />
+          <path d="M 170,320 C 170,272 186,244 208,236 C 218,233 226,238 230,248 C 234,260 230,278 222,295 C 216,308 208,318 204,320 L 190,320 C 196,316 204,306 208,293 C 215,278 217,265 214,257 C 211,250 205,248 198,251 C 182,258 174,282 174,320 Z" />
 
-          {/* Inner Field Blue Fill */}
-          <path
-            d="M 500,189
-               C 583,189 661,205 710,228
-               C 744,244 763,267 767,305
-               C 775,378 781,444 781,490
-               C 781,538 775,603 767,671
-               C 763,710 744,734 701,758
-               C 653,780 574,792 500,792
-               C 426,792 347,780 299,758
-               C 256,734 237,710 233,671
-               C 225,603 219,538 219,490
-               C 219,444 225,378 233,305
-               C 237,267 256,244 290,228
-               C 339,205 417,189 500,189 Z"
-            fill={`url(#${shieldGradId})`}
-          />
+          {/* Right Arabic Calligraphic Form ('Mim-Alif-Qaf') */}
+          <path d="M 432,320 C 430,285 408,256 378,242 C 358,232 340,235 334,248 C 328,261 334,277 344,292 C 352,304 362,314 368,320 L 382,320 C 374,312 364,300 358,290 C 352,278 348,266 352,258 C 356,250 368,247 384,256 C 406,268 422,292 422,320 Z" />
+          <path d="M 330,320 C 330,272 314,244 292,236 C 282,233 274,238 270,248 C 266,260 270,278 278,295 C 284,308 292,318 296,320 L 310,320 C 304,316 296,306 292,293 C 285,278 283,265 286,257 C 289,250 295,248 302,251 C 318,258 326,282 326,320 Z" />
 
-          {/* 4. Left Golden Wing */}
-          <g>
-            <path
-              d="M 436,585
-                 C 390,620 338,625 305,580
-                 C 285,550 270,505 285,465
-                 C 275,480 268,500 270,520
-                 C 272,550 286,578 308,602
-                 C 282,588 272,560 272,530
-                 C 272,490 284,440 305,395
-                 C 318,365 338,330 365,305
-                 C 370,335 362,370 348,405
-                 C 334,440 318,475 318,505
-                 C 330,470 352,435 378,405
-                 C 392,390 405,380 415,370
-                 C 412,405 398,445 380,480
-                 C 362,515 348,542 352,562
-                 C 358,580 380,592 410,600
-                 C 432,605 448,595 448,580
-                 C 448,565 435,560 422,568
-                 C 414,575 414,585 422,585
-                 Z"
-              fill={`url(#${wingsGradId})`}
-              stroke="#FFFFFF"
-              strokeWidth="3"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M 425,595 
-                 C 390,605 365,622 368,648 
-                 C 372,670 395,684 416,676 
-                 C 432,668 440,650 435,632"
-              fill="none"
-              stroke="#FFFFFF"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-            />
-          </g>
+          {/* Intermediate Inner Curved Vaults */}
+          <path d="M 126,320 C 135,286 148,268 164,268 C 180,268 191,286 198,320 Z" />
+          <path d="M 302,320 C 309,286 320,268 336,268 C 352,268 365,286 374,320 Z" />
 
-          {/* Right Golden Wing */}
-          <g>
-            <path
-              d="M 564,585
-                 C 610,620 662,625 695,580
-                 C 715,550 730,505 715,465
-                 C 725,480 732,500 730,520
-                 C 728,550 714,578 692,602
-                 C 718,588 728,560 728,530
-                 C 728,490 716,440 695,395
-                 C 682,365 662,330 635,305
-                 C 630,335 638,370 652,405
-                 C 666,440 682,475 682,505
-                 C 670,470 648,435 622,405
-                 C 608,390 595,380 585,370
-                 C 588,405 602,445 620,480
-                 C 638,515 652,542 648,562
-                 C 642,580 620,592 590,600
-                 C 568,605 552,595 552,580
-                 C 552,565 565,560 578,568
-                 C 586,575 586,585 578,585
-                 Z"
-              fill={`url(#${wingsGradId})`}
-              stroke="#FFFFFF"
-              strokeWidth="3"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M 575,595 
-                 C 610,605 635,622 632,648 
-                 C 628,670 605,684 584,676 
-                 C 568,668 560,650 565,632"
-              fill="none"
-              stroke="#FFFFFF"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-            />
-          </g>
-
-          {/* 5. Center Top: Kalam Pen */}
-          <g id="compPen">
-            <path
-              d="M 500,270 
-                 L 485,320 
-                 L 488,380 
-                 L 512,380 
-                 L 515,320 Z"
-              fill="#FFFFFF"
-              stroke="#003D88"
-              strokeWidth="3.5"
-              strokeLinejoin="round"
-            />
-            <line x1="500" y1="274" x2="500" y2="330" stroke="#003D88" strokeWidth="3" />
-            <circle cx="500" cy="333" r="3.5" fill="#003D88" />
-            <line x1="488" y1="360" x2="512" y2="360" stroke="#003D88" strokeWidth="3" />
-          </g>
-
-          {/* 6. Center: Open Al-Qur'an */}
-          <g id="compQuran">
-            <path
-              d="M 500,378
-                 C 475,368 445,368 424,378
-                 L 418,460
-                 C 442,450 475,450 500,462
-                 C 525,450 558,450 582,460
-                 L 576,378
-                 C 555,368 525,368 500,378 Z"
-              fill="#FFFFFF"
-              stroke="#003D88"
-              strokeWidth="4.5"
-              strokeLinejoin="round"
-            />
-            <line x1="500" y1="378" x2="500" y2="462" stroke="#003D88" strokeWidth="3.5" />
-            <line x1="435" y1="392" x2="488" y2="392" stroke="#003D88" strokeWidth="3" strokeLinecap="round" />
-            <line x1="433" y1="405" x2="488" y2="405" stroke="#003D88" strokeWidth="3" strokeLinecap="round" />
-            <line x1="431" y1="418" x2="488" y2="418" stroke="#003D88" strokeWidth="3" strokeLinecap="round" />
-            <line x1="430" y1="431" x2="488" y2="431" stroke="#003D88" strokeWidth="3" strokeLinecap="round" />
-            <line x1="432" y1="444" x2="488" y2="444" stroke="#003D88" strokeWidth="3" strokeLinecap="round" />
-
-            <line x1="512" y1="392" x2="565" y2="392" stroke="#003D88" strokeWidth="3" strokeLinecap="round" />
-            <line x1="512" y1="405" x2="567" y2="405" stroke="#003D88" strokeWidth="3" strokeLinecap="round" />
-            <line x1="512" y1="418" x2="569" y2="418" stroke="#003D88" strokeWidth="3" strokeLinecap="round" />
-            <line x1="512" y1="431" x2="570" y2="431" stroke="#003D88" strokeWidth="3" strokeLinecap="round" />
-            <line x1="512" y1="444" x2="568" y2="444" stroke="#003D88" strokeWidth="3" strokeLinecap="round" />
-          </g>
-
-          {/* 7. Center: Silang Rehal Stand (Crossed X-Shape) */}
-          <g id="compRehal">
-            <path
-              d="M 436,458 
-                 L 556,540 
-                 L 542,558 
-                 L 422,476 Z"
-              fill="#FFFFFF"
-              stroke="#003D88"
-              strokeWidth="4.5"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M 564,458 
-                 L 444,540 
-                 L 458,558 
-                 L 578,476 Z"
-              fill="#FFFFFF"
-              stroke="#003D88"
-              strokeWidth="4.5"
-              strokeLinejoin="round"
-            />
-            <rect x="492" y="491" width="16" height="16" transform="rotate(45 500 499)" fill="#FFFFFF" stroke="#003D88" strokeWidth="3" />
-          </g>
-
-          {/* 8. Bottom Center: White Ribbon "AN-NUR" */}
-          <g id="compRibbon">
-            <path
-              d="M 405,620 
-                 L 350,592 
-                 L 368,628 
-                 L 345,660 
-                 L 405,652 Z"
-              fill="#FFFFFF"
-              stroke="#003D88"
-              strokeWidth="4.5"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M 595,620 
-                 L 650,592 
-                 L 632,628 
-                 L 655,660 
-                 L 595,652 Z"
-              fill="#FFFFFF"
-              stroke="#003D88"
-              strokeWidth="4.5"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M 390,615 
-                 C 448,632 552,632 610,615 
-                 C 620,648 616,672 604,688 
-                 C 550,710 450,710 396,688 
-                 C 384,672 380,648 390,615 Z"
-              fill="#FFFFFF"
-              stroke="#003D88"
-              strokeWidth="5"
-              strokeLinejoin="round"
-            />
-            <text
-              x="500"
-              y="668"
-              fontFamily="'Plus Jakarta Sans', Arial, sans-serif"
-              fontWeight="900"
-              fontSize="38"
-              fill="#003D88"
-              textAnchor="middle"
-              letterSpacing="5"
-            >
-              AN-NUR
-            </text>
-          </g>
+          {/* Solid Horizontal Grounding Base Bar */}
+          <rect x="48" y="320" width="404" height="15" rx="3" />
         </g>
+
+        {/* Bottom Serif Text: AL-MAQOM */}
+        <text 
+          x="250" 
+          y="388" 
+          fontFamily="'Times New Roman', Times, 'Cinzel', 'Playfair Display', Georgia, serif" 
+          fontWeight="900" 
+          fontSize="44" 
+          fill="#009B4D" 
+          textAnchor="middle" 
+          letterSpacing="4"
+        >
+          AL-MAQOM
+        </text>
       </svg>
     </div>
   );
 };
 
+export const AlMaqomLogo = SchoolLogo;
 export const FatahillahLogo = SchoolLogo;
+export default SchoolLogo;

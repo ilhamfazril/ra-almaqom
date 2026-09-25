@@ -68,7 +68,7 @@ export const AdminNewsTab: React.FC<AdminNewsTabProps> = ({
       slug: `berita-${Date.now()}`,
       category: 'Berita',
       date: today,
-      author: 'Humas MTs Fatahillah Cimahi',
+      author: 'Humas RA Al-Maqom',
       readTime: '3 menit',
       featured: false,
       image: '/images/slide1_gedung.jpg',
@@ -354,7 +354,7 @@ export const AdminNewsTab: React.FC<AdminNewsTabProps> = ({
                   required
                   value={editingItem.title}
                   onChange={(e) => setEditingItem({ ...editingItem, title: e.target.value })}
-                  placeholder="Contoh: Siswa MTs Fatahillah Cimahi Menjuarai Turnamen Futsal Kota Cimahi"
+                  placeholder="Contoh: Santri RA Al-Maqom Meraih Juara Lomba Mewarnai & Tahfidz Cilik"
                   className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none font-semibold text-slate-900"
                 />
               </div>
@@ -412,7 +412,7 @@ export const AdminNewsTab: React.FC<AdminNewsTabProps> = ({
                     type="text"
                     value={editingItem.author}
                     onChange={(e) => setEditingItem({ ...editingItem, author: e.target.value })}
-                    placeholder="Humas MTs Fatahillah Cimahi"
+                    placeholder="Humas RA Al-Maqom"
                     className="w-full px-3 py-2 text-xs border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:outline-none"
                   />
                 </div>

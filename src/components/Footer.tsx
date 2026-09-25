@@ -8,7 +8,7 @@ import {
   GraduationCap
 } from 'lucide-react';
 import { SCHOOL_INFO } from '../data/schoolData';
-import { PgriLogo } from './PgriLogo';
+import { SchoolLogo } from './SchoolLogo';
 
 interface FooterProps {
   onNavigate: (tab: string) => void;
@@ -25,19 +25,19 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenPsbModal }) =>
           {/* Col 1: Brand & Profile */}
           <div className="lg:col-span-4 space-y-4">
             <div className="flex items-center gap-3">
-              <PgriLogo size={48} />
+              <SchoolLogo size={48} withWhiteBg />
               <div>
                 <div className="text-white font-black text-base tracking-tight">
-                  MTS FATAHILLAH CIMAHI
+                  RA AL-MAQOM
                 </div>
                 <div className="text-[11px] text-emerald-400 font-medium">
-                  Yayasan Fatahillah Cimahi
+                  Yayasan Al-Maqom
                 </div>
               </div>
             </div>
 
             <p className="text-slate-400 text-xs leading-relaxed">
-              Madrasah Tsanawiyah yang berdedikasi membentuk generasi Qur'ani yang berakhlak mulia, cerdas, berprestasi, dan terampil. Menyelenggarakan perpaduan Kurikulum Merdeka & Kemenag dengan sarana laboratorium komputer ANBK dan ragam ekstrakurikuler unggulan.
+              Raudhatul Athfal (RA) Al-Maqom berdedikasi membentuk generasi Qur'ani usia dini yang ceria, mandiri, kreatif, dan berakhlakul karimah melalui pendekatan bermain sambil belajar, bimbingan tahfidz cilik, serta pembiasaan karakter Islami yang penuh kasih sayang.
             </p>
 
             <div className="pt-2 flex flex-wrap gap-2 text-[10px]">
@@ -48,7 +48,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenPsbModal }) =>
                 Akreditasi: {SCHOOL_INFO.akreditasi}
               </span>
               <span className="bg-slate-900 border border-slate-800 text-slate-300 px-2.5 py-1 rounded-md font-semibold">
-                Kota Cimahi - Jawa Barat
+                Raudhatul Athfal
               </span>
             </div>
           </div>
@@ -192,12 +192,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenPsbModal }) =>
       {/* Bottom Bar */}
       <div className="border-t border-slate-800/80 py-6 px-4 bg-slate-950 text-[11px] text-slate-500 text-center sm:flex sm:justify-between sm:items-center max-w-7xl mx-auto">
         <div>
-          © 2026 MTS FATAHILLAH CIMAHI ( Developer By Ilham Fazril ) Hak Cipta Dilindungi Undang-Undang
+          © 2026 RA AL-MAQOM ( Developer By Ilham Fazril ) Hak Cipta Dilindungi Undang-Undang
         </div>
         <div className="mt-2 sm:mt-0 flex items-center justify-center gap-4">
-          <span>Website Resmi: mtsfatahillahcimahi.sch.id</span>
+          <span>Website Resmi: {SCHOOL_INFO.website}</span>
           <span>•</span>
-          <span className="text-emerald-400 font-bold">ISLAMI • CERDAS • BERAKHLAKUL KARIMAH</span>
+          <span className="text-emerald-400 font-bold">{SCHOOL_INFO.motto}</span>
         </div>
       </div>
     </footer>

@@ -439,45 +439,45 @@ export const DEFAULT_HERO_SLIDES: HeroSlideContent[] = (Array.isArray(PERSISTED_
   : [
       {
         id: 0,
-        title: 'Membentuk Generasi Cerdas, Disiplin, dan Berakhlak Mulia',
-        subtitle: 'MTs Fatahillah Cimahi — Yayasan Fatahillah Cimahi',
-        description: 'Lembaga pendidikan formal tingkat menengah pertama yang mengintegrasikan Kurikulum Merdeka, pembiasaan religius, dan keteladanan budi pekerti luhur di Kota Cimahi.',
-        badge: 'Sekolah Berkarakter & Humanis',
+        title: 'Membentuk Generasi Qur’ani yang Cerdas, Mandiri, dan Ceria',
+        subtitle: 'RA Al-Maqom — Raudhatul Athfal Al-Maqom',
+        description: 'Lembaga pendidikan anak usia dini berciri khas Islam yang memadukan Kurikulum Merdeka PAUD, bimbingan tahfidz cilik, dan pembiasaan akhlak mulia dengan penuh kasih sayang.',
+        badge: 'PAUD / RA Berkarakter & Ramah Anak',
         bgImage: '/images/slide1_gedung.jpg',
-        alt: 'Gedung dan siswa MTs Fatahillah Cimahi di tangga dan selasar',
-        primaryBtn: 'Pendaftaran PPDB 2026/2027',
-        secondaryBtn: 'Jelajahi Profil Sekolah',
+        alt: 'Suasana ceria santri RA Al-Maqom di gedung sekolah',
+        primaryBtn: 'Pendaftaran PPDB 2027/2028',
+        secondaryBtn: 'Jelajahi Profil Madrasah',
       },
       {
         id: 1,
-        title: 'Menumbuhkan Jiwa Nasionalisme & Kedisiplinan Karakter',
-        subtitle: 'Upacara Bendera, Sholat Berjamaah & Pembiasaan Positif',
-        description: 'Mendidik mental tangguh dan integritas melalui apel pagi rutin, upacara bendera merah putih, tadarus Al-Qur’an bersama, dan kepramukaan aktif.',
-        badge: 'Kedisiplinan & Integritas',
+        title: 'Belajar Sambil Bermain dengan Penuh Kasih Sayang',
+        subtitle: 'Tahfidz Juz 30, Doa Keseharian & Pembiasaan Adab Santun',
+        description: 'Mendidik tunas bangsa sejak usia emas melalui pendekatan bermain bermakna, sholat dhuha cilik, senam irama ceria, dan aneka stimulasi motorik kreatif.',
+        badge: 'Ceria, Edukatif & Bermakna',
         bgImage: '/images/slide2_upacara.jpg',
-        alt: 'Upacara bendera dan apel pagi siswa MTs Fatahillah Cimahi',
-        primaryBtn: 'Lihat Aktivitas Kesiswaan',
+        alt: 'Kegiatan pembiasaan santri cilik RA Al-Maqom',
+        primaryBtn: 'Lihat Program Unggulan',
         secondaryBtn: 'Daftar Sekarang',
       },
       {
         id: 2,
-        title: 'Fasilitas Laboratorium Komputer Siap Ujian CBT & ANBK',
-        subtitle: 'Mempersiapkan Literasi Digital & Asesmen Berbasis Komputer',
-        description: 'Didukung laboratorium komputer representatif dengan puluhan PC desktop siap pakai dan koneksi internet stabil untuk sukses Asesmen Nasional Berbasis Komputer (ANBK).',
-        badge: 'Teknologi & Literasi Digital',
+        title: 'Lingkungan Belajar Asri & Arena Bermain Outdoor Aman',
+        subtitle: 'Sentra Balok, Ruang Kelas Tematik Ber-AC & Playground Seru',
+        description: 'Dilengkapi fasilitas arena bermain ramah anak, perpustakaan dongeng bergambar, sentra main peran, dan perlengkapan drumband cilik yang representatif.',
+        badge: 'Fasilitas Ramah Anak',
         bgImage: '/images/slide3_lab_komputer.jpg',
-        alt: 'Laboratorium komputer ANBK MTs Fatahillah Cimahi',
+        alt: 'Fasilitas edukatif dan arena bermain RA Al-Maqom',
         primaryBtn: 'Sarana & Fasilitas',
         secondaryBtn: 'Info Kurikulum',
       },
       {
         id: 3,
-        title: 'Penerimaan Peserta Didik Baru (PPDB) 2026/2027',
-        subtitle: 'Mari Bergabung Menjadi Bagian dari MTs Fatahillah Cimahi',
-        description: 'Biaya pendidikan terjangkau, lingkungan belajar kondusif dan aman, beasiswa afirmasi bagi keluarga kurang mampu, serta dibimbing guru-guru berpengalaman.',
+        title: 'Penerimaan Peserta Didik Baru (PPDB) 2027/2028',
+        subtitle: 'Mari Bergabung Menjadi Bagian dari Keluarga Besar RA Al-Maqom',
+        description: 'Menerima calon santri Kelompok Bermain (3-4 tahun), Kelompok A (4-5 tahun), dan Kelompok B (5-6 tahun). Biaya pendidikan bersahabat dan kuota terbatas.',
         badge: 'PPDB Telah Dibuka',
         bgImage: '/images/slide4_lapangan.jpg',
-        alt: 'Halaman sekolah dan gedung 2 lantai MTs Fatahillah Cimahi',
+        alt: 'Halaman dan arena bermain RA Al-Maqom',
         primaryBtn: 'Daftar PPDB Online',
         secondaryBtn: 'Hubungi Panitia',
       },
@@ -495,10 +495,10 @@ export const DEFAULT_TEACHERS_CONTENT: TeacherStaff[] = (Array.isArray(PERSISTED
   : TEACHERS_LIST;
 
 export const DEFAULT_STATS_CONTENT: SchoolStatsContent = {
-  students: (PERSISTED_USER_CONTENT as any).stats?.students || '450+',
-  teachers: (PERSISTED_USER_CONTENT as any).stats?.teachers || '26',
-  extracurriculars: (PERSISTED_USER_CONTENT as any).stats?.extracurriculars || '14',
-  accreditation: (PERSISTED_USER_CONTENT as any).stats?.accreditation || 'Akreditasi B',
+  students: (PERSISTED_USER_CONTENT as any).stats?.students || '120+',
+  teachers: (PERSISTED_USER_CONTENT as any).stats?.teachers || '12',
+  extracurriculars: (PERSISTED_USER_CONTENT as any).stats?.extracurriculars || '8',
+  accreditation: (PERSISTED_USER_CONTENT as any).stats?.accreditation || 'Terakreditasi',
 };
 
 export const DEFAULT_SITE_CONTENT: SchoolSiteContent = {
@@ -527,14 +527,14 @@ export const DEFAULT_SITE_CONTENT: SchoolSiteContent = {
 
 const CONTENT_DOC_REF = doc(db, 'site_content', 'main_config');
 const PPDB_COLLECTION_REF = collection(db, 'ppdb_registrations');
-const CACHE_STORAGE_KEY = 'mts_fatahillah_cimahi_content_live_v1';
+const CACHE_STORAGE_KEY = 'ra_almaqom_content_live_v1';
 
 // Safe migration of legacy caches so user modifications are never lost
 if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
   try {
     const active = localStorage.getItem(CACHE_STORAGE_KEY);
     if (!active) {
-      const legacy = localStorage.getItem('smp_pgri_5_cimahi_content_live_v7');
+      const legacy = localStorage.getItem('mts_fatahillah_cimahi_content_live_v1') || localStorage.getItem('smp_pgri_5_cimahi_content_live_v7');
       if (legacy) {
         localStorage.setItem(CACHE_STORAGE_KEY, legacy);
       }
@@ -658,8 +658,12 @@ export function cleanCampusTermsInObject<T>(obj: T): T {
       .replace(/halaman kampus sekolah/gi, 'halaman sekolah')
       .replace(/halaman kampus/gi, 'halaman sekolah')
       .replace(/kampus sekolah/gi, 'sekolah')
-      .replace(/kampus MTs Fatahillah/gi, 'MTs Fatahillah')
-      .replace(/Kampus MTs Fatahillah/gi, 'MTs Fatahillah') as unknown as T;
+      .replace(/kampus MTs Fatahillah/gi, 'RA Al-Maqom')
+      .replace(/Kampus MTs Fatahillah/gi, 'RA Al-Maqom')
+      .replace(/MTs Fatahillah Cimahi/gi, 'RA Al-Maqom')
+      .replace(/MTs Fatahillah/gi, 'RA Al-Maqom')
+      .replace(/SMP PGRI 5 Cimahi/gi, 'RA Al-Maqom')
+      .replace(/SMP PGRI 5/gi, 'RA Al-Maqom') as unknown as T;
   }
   if (Array.isArray(obj)) {
     return obj.map(item => cleanCampusTermsInObject(item)) as unknown as T;

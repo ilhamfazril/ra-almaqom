@@ -29,7 +29,7 @@ export const AchievementsSection: React.FC<AchievementsSectionProps> = ({ achiev
             Prestasi & <span className="text-emerald-700">Pencapaian Siswa</span>
           </h2>
           <p className="mt-3 text-slate-600 text-base sm:text-lg">
-            Apresiasi perjuangan dan dedikasi siswa-siswi MTs Fatahillah Cimahi dalam berbagai ajang akademik, olahraga, kepramukaan, dan seni budaya.
+            Apresiasi perjuangan dan dedikasi santri cilik RA Al-Maqom dalam berbagai ajang festival anak shaleh, tahfidz, seni, dan kreativitas.
           </p>
         </div>
 
@@ -80,7 +80,7 @@ export const AchievementsSection: React.FC<AchievementsSectionProps> = ({ achiev
 
                 <div className="mt-4 pt-3 border-t border-slate-100 flex items-center gap-1 text-[11px] text-amber-600 font-bold">
                   <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-                  <span>Prestasi Siswa MTs Fatahillah</span>
+                  <span>Prestasi Santri RA Al-Maqom</span>
                 </div>
               </div>
             </div>

@@ -58,7 +58,7 @@ export const AdminPpdbTab: React.FC = () => {
       clean = '62' + clean;
     }
     const msg = encodeURIComponent(
-      `Halo Bapak/Ibu orang tua dari ananda *${candidateName}* (Kode Registrasi: ${regCode}), kami dari Panitia PPDB MTs Fatahillah Cimahi ingin mengonfirmasi terkait pendaftaran PPDB TP 2027/2028.`
+      `Halo Bapak/Ibu orang tua dari ananda *${candidateName}* (Kode Registrasi: ${regCode}), kami dari Panitia PPDB RA Al-Maqom ingin mengonfirmasi terkait pendaftaran santri baru TP 2027/2028.`
     );
     return `https://wa.me/${clean}?text=${msg}`;
   };
@@ -146,7 +146,7 @@ export const AdminPpdbTab: React.FC = () => {
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement('a');
     link.setAttribute('href', encodedUri);
-    link.setAttribute('download', `ppdb_2027_2028_mts_fatahillah_cimahi_${new Date().toISOString().slice(0, 10)}.csv`);
+    link.setAttribute('download', `ppdb_2027_2028_ra_almaqom_${new Date().toISOString().slice(0, 10)}.csv`);
     document.body.appendChild(link);
     link.click();
     link.remove();
@@ -202,7 +202,7 @@ export const AdminPpdbTab: React.FC = () => {
             </span>
           </div>
           <p className="text-xs sm:text-sm text-slate-600 mt-1">
-            Daftar calon siswa pendaftar PPDB online MTs Fatahillah Cimahi. Data diurutkan secara kronologis dengan pendaftaran terbaru di posisi paling bawah.
+            Daftar calon siswa/santri pendaftar PPDB online RA Al-Maqom. Data diurutkan secara kronologis dengan pendaftaran terbaru di posisi paling bawah.
           </p>
         </div>
 
@@ -502,7 +502,7 @@ export const AdminPpdbTab: React.FC = () => {
                 <GraduationCap className="w-5 h-5 text-amber-400" />
                 <div>
                   <h3 className="font-bold text-sm sm:text-base">Informasi Detail Pendaftar PPDB</h3>
-                  <p className="text-[11px] text-emerald-200">MTs Fatahillah Cimahi — TP 2027/2028</p>
+                  <p className="text-[11px] text-emerald-200">RA Al-Maqom — TP 2027/2028</p>
                 </div>
               </div>
               <button

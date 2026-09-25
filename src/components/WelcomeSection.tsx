@@ -40,10 +40,10 @@ export const WelcomeSection: React.FC<WelcomeSectionProps> = ({
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Selamat Datang di <span className="text-emerald-700">MTs Fatahillah Cimahi</span>
+            Selamat Datang di <span className="text-emerald-700">{SCHOOL_INFO.name}</span>
           </h2>
           <p className="mt-3 text-slate-600 text-base sm:text-lg">
-            Membentuk generasi pembelajar yang beriman dan bertakwa, cerdas, terampil, serta memiliki budi pekerti luhur di bawah naungan Yayasan Fatahillah Cimahi.
+            Membentuk generasi Qur’ani usia dini yang beriman dan bertakwa, cerdas, kreatif, mandiri, serta berakhlakul karimah di bawah naungan Yayasan Al-Maqom.
           </p>
         </div>
 
@@ -97,7 +97,7 @@ export const WelcomeSection: React.FC<WelcomeSectionProps> = ({
                 />
                 <div className="absolute bottom-2 inset-x-2 bg-slate-950/90 backdrop-blur-md py-1.5 px-2 rounded-lg border border-amber-400/30">
                   <div className="text-xs font-bold text-amber-400">Kepala Sekolah</div>
-                  <div className="text-[11px] text-slate-200">MTs Fatahillah Cimahi</div>
+                  <div className="text-[11px] text-slate-200">RA Al-Maqom</div>
                 </div>
               </div>
 
@@ -108,7 +108,7 @@ export const WelcomeSection: React.FC<WelcomeSectionProps> = ({
                 {currentPrincipal.role}
               </p>
               <div className="mt-2 text-xs text-slate-500 bg-slate-100 px-3 py-1 rounded-full font-medium">
-                Yayasan Fatahillah Cimahi
+                Yayasan Al-Maqom
               </div>
             </div>
 
@@ -156,7 +156,7 @@ export const WelcomeSection: React.FC<WelcomeSectionProps> = ({
               <div className="relative z-10">
                 <div className="inline-flex items-center gap-2 bg-amber-400/20 text-amber-300 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-3">
                   <Target className="w-4 h-4 text-amber-400" />
-                  <span>Visi MTs Fatahillah Cimahi</span>
+                  <span>Visi RA Al-Maqom</span>
                 </div>
                 <h3 className="text-lg sm:text-2xl font-extrabold text-white leading-relaxed">
                   "{SCHOOL_INFO.vision}"

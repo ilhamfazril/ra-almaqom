@@ -32,7 +32,7 @@ export const TeachersSection: React.FC<TeachersSectionProps> = ({
             Pimpinan & Tenaga <span className="text-emerald-700">Pendidik Unggulan</span>
           </h2>
           <p className="mt-3 text-slate-600 text-base sm:text-lg">
-            Tenaga pendidik profesional berkualifikasi sarjana dan magister, berdedikasi membimbing dan menginspirasi akhlak, intelektual, dan potensi siswa MTs Fatahillah Cimahi.
+            Tenaga pendidik profesional berkualifikasi pendidikan anak usia dini & sarjana, berdedikasi mendidik dengan ketulusan dan penuh kasih sayang di RA Al-Maqom.
           </p>
 
           {isAdmin && onOpenAdminDashboard && (
@@ -74,7 +74,7 @@ export const TeachersSection: React.FC<TeachersSectionProps> = ({
                         Tenaga Pendidik
                       </div>
                       <div className="text-[10px] text-slate-400 mt-0.5">
-                        MTs Fatahillah Cimahi
+                        RA Al-Maqom
                       </div>
                     </div>
                   )}

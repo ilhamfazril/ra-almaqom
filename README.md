@@ -1,6 +1,6 @@
-# Website Resmi MTs Fatahillah Cimahi
+# Website Resmi RA Al-Maqom
 
-Website portal resmi MTs Fatahillah Cimahi dengan fitur Profil Madrasah, Kurikulum & Program Unggulan, Galeri & Sarana, Ekstrakurikuler, Berita/Warta, Prestasi Siswa, Sistem Pendaftaran PPDB Online, dan Panel Admin Manajemen Konten Sekolah.
+Website portal resmi Raudhatul Athfal (RA) Al-Maqom dengan fitur Profil Madrasah, Kurikulum Merdeka PAUD/RA & Program Unggulan, Galeri & Sarana, Ekstrakurikuler, Berita/Warta, Prestasi Santri, Sistem Pendaftaran PPDB Online, dan Panel Admin Manajemen Konten Sekolah.
 
 ---
 
@@ -20,13 +20,13 @@ git init
 git add .
 
 # 3. Commit pertama
-git commit -m "feat: Website Resmi MTs Fatahillah Cimahi"
+git commit -m "feat: Website Resmi RA Al-Maqom"
 
 # 4. Ubah branch utama menjadi main
 git branch -M main
 
 # 5. Hubungkan ke repository GitHub Anda (ganti URL dengan repo Anda)
-git remote add origin https://github.com/USERNAME_ANDA/mts-fatahillah-cimahi.git
+git remote add origin https://github.com/ilhamfazril/ra-almaqom.git
 
 # 6. Push ke GitHub
 git push -u origin main
@@ -38,14 +38,14 @@ git push -u origin main
 
 1. Buka [https://vercel.com](https://vercel.com) dan login dengan akun GitHub Anda.
 2. Klik tombol **"Add New..."** lalu pilih **"Project"**.
-3. Pilih repository GitHub **`mts-fatahillah-cimahi`** yang baru saja Anda upload, lalu klik **"Import"**.
+3. Pilih repository GitHub **`ra-almaqom`** yang baru saja Anda upload, lalu klik **"Import"**.
 4. Di bagian pengaturan proyek Vercel:
    - **Framework Preset**: Pilih **Vite** (biasanya terdeteksi otomatis).
    - **Root Directory**: `./` (default).
    - **Build Command**: `npm run build` (atau `vite build`).
    - **Output Directory**: `dist`.
 5. Klik tombol **"Deploy"**.
-6. Tunggu proses build sekitar 1–2 menit. Website MTs Fatahillah Cimahi akan langsung aktif dengan domain gratis `*.vercel.app` (dan Anda juga bisa menghubungkan domain custom madrasah nantinya).
+6. Tunggu proses build sekitar 1–2 menit. Website RA Al-Maqom akan langsung aktif dengan domain gratis `*.vercel.app` (dan Anda juga bisa menghubungkan domain custom madrasah nantinya).
 
 ---
 

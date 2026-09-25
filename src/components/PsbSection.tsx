@@ -53,7 +53,7 @@ export const PsbSection: React.FC<PsbSectionProps> = ({ onOpenPsbModal }) => {
             <span className="text-amber-400">Tahun Pelajaran {PSB_INFO.academicYear}</span>
           </h2>
           <p className="mt-3 text-slate-300 text-base sm:text-lg">
-            Bergabunglah bersama keluarga besar MTs Fatahillah Cimahi. Dapatkan pendidikan berkualitas, berkarakter mulia, dan berdisiplin tinggi dengan biaya terjangkau.
+            Bergabunglah bersama keluarga besar RA Al-Maqom. Dapatkan pendidikan anak usia dini berkualitas, cinta Al-Qur’an, dan berakhlakul karimah dengan suasana ceria.
           </p>
         </div>
 

@@ -40,7 +40,7 @@ export const NewsSection: React.FC<NewsSectionProps> = ({ onSelectArticle, newsD
               Berita, Prestasi & <span className="text-emerald-700">Agenda Sekolah</span>
             </h2>
             <p className="mt-2 text-slate-600 text-sm sm:text-base max-w-xl">
-              Informasi terpercaya seputar kiprah siswa, agenda akademik, serta kegiatan MTs Fatahillah Cimahi.
+              Informasi terpercaya seputar kegiatan santri, agenda madrasah, serta program RA Al-Maqom.
             </p>
           </div>
 

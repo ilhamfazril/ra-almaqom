@@ -192,7 +192,7 @@ export const AdminTeachersTab: React.FC<AdminTeachersTabProps> = ({
             </span>
           </div>
           <p className="text-xs text-slate-500 mt-1">
-            Tambah, edit data profil pendidik, perbarui foto, jabatan, mata pelajaran dan kualifikasi pendidikan MTs Fatahillah Cimahi.
+            Tambah, edit data profil pendidik, perbarui foto, jabatan, mata pelajaran dan kualifikasi pendidikan RA Al-Maqom.
           </p>
         </div>
 

@@ -11,7 +11,7 @@ import {
 import firebaseConfigData from '../../firebase-applet-config.json';
 
 const REST_MEDIA_BASE = `https://firestore.googleapis.com/v1/projects/${firebaseConfigData.projectId}/databases/${firebaseConfigData.firestoreDatabaseId}/documents/media_assets`;
-const MEDIA_STORAGE_KEY_PREFIX = 'smp5_media_asset_';
+const MEDIA_STORAGE_KEY_PREFIX = 'almaqom_media_asset_';
 
 // In-memory cache of all loaded media assets for instant O(1) synchronous resolution
 const mediaMemoryCache = new Map<string, string>();

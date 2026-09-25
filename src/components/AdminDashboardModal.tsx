@@ -36,7 +36,7 @@ import {
 import { getAdminSession } from '../services/adminAuthService';
 import { ProgramUnggulan, NewsItem, FacilityItem, ExtracurricularItem, AchievementItem, TeacherStaff } from '../types';
 import { PROGRAMS_UNGGULAN, NEWS_LIST, FACILITIES_LIST, EXTRACURRICULAR_LIST, ACHIEVEMENTS_LIST, TEACHERS_LIST } from '../data/schoolData';
-import { PgriLogo } from './PgriLogo';
+import { SchoolLogo } from './SchoolLogo';
 
 import { AdminOverviewTab } from './admin/AdminOverviewTab';
 import { AdminHeroSlidesTab } from './admin/AdminHeroSlidesTab';
@@ -321,7 +321,7 @@ export const AdminDashboardModal: React.FC<AdminDashboardModalProps> = ({
         action: meta?.action || 'update',
         targetTab: 'fasilitas',
         targetElementId: 'fasilitas',
-        details: 'Data fasilitas penunjang pembelajaran MTs Fatahillah Cimahi berhasil diperbarui secara langsung.',
+        details: 'Data fasilitas penunjang pembelajaran RA Al-Maqom berhasil diperbarui secara langsung.',
       }
     );
   };
@@ -395,7 +395,7 @@ export const AdminDashboardModal: React.FC<AdminDashboardModalProps> = ({
       setRealtimeSuccessInfo({
         isOpen: true,
         sectionName: 'Pemulihan Konfigurasi Standar',
-        itemTitle: 'Seluruh Konten MTs Fatahillah Cimahi',
+        itemTitle: 'Seluruh Konten RA Al-Maqom',
         actionType: 'reset',
         timestamp: new Date().toLocaleTimeString('id-ID', {
           hour: '2-digit',
@@ -419,7 +419,7 @@ export const AdminDashboardModal: React.FC<AdminDashboardModalProps> = ({
     const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(siteContent, null, 2));
     const downloadAnchor = document.createElement('a');
     downloadAnchor.setAttribute('href', dataStr);
-    downloadAnchor.setAttribute('download', `mts_fatahillah_cimahi_backup_${new Date().toISOString().slice(0, 10)}.json`);
+    downloadAnchor.setAttribute('download', `ra_almaqom_backup_${new Date().toISOString().slice(0, 10)}.json`);
     document.body.appendChild(downloadAnchor);
     downloadAnchor.click();
     downloadAnchor.remove();
@@ -516,13 +516,13 @@ export const AdminDashboardModal: React.FC<AdminDashboardModalProps> = ({
             </button>
 
             <div className="flex-shrink-0">
-              <PgriLogo size={36} />
+              <SchoolLogo size={36} withWhiteBg />
             </div>
 
             <div>
               <div className="flex items-center gap-2">
                 <h2 className="text-sm sm:text-base font-extrabold tracking-tight text-white leading-none">
-                  Admin Panel MTs Fatahillah Cimahi
+                  Admin Panel RA Al-Maqom
                 </h2>
                 <span className="hidden sm:inline-flex items-center gap-1 bg-emerald-800/90 text-emerald-300 text-[10px] font-bold px-2 py-0.5 rounded-full border border-emerald-600/40">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
@@ -835,7 +835,7 @@ export const AdminDashboardModal: React.FC<AdminDashboardModalProps> = ({
                           Kembalikan ke Sampel Data Awal
                         </h4>
                         <p className="text-xs text-slate-500 mt-1 leading-relaxed">
-                          Jika Anda ingin mereset konten sekolah kembali ke data bawaan MTs Fatahillah Cimahi (semua penyesuaian baru akan diganti dengan data awal).
+                          Jika Anda ingin mereset konten sekolah kembali ke data bawaan RA Al-Maqom (semua penyesuaian baru akan diganti dengan data awal).
                         </p>
                       </div>
 

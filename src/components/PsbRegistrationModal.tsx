@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 import { PSB_INFO, SCHOOL_INFO } from '../data/schoolData';
 import { savePpdbRegistrationToFirestore } from '../services/siteContentService';
-import { PgriLogo } from './PgriLogo';
+import { SchoolLogo } from './SchoolLogo';
 
 interface PsbRegistrationModalProps {
   isOpen: boolean;
@@ -45,7 +45,7 @@ export const PsbRegistrationModal: React.FC<PsbRegistrationModalProps> = ({ isOp
 
     try {
       setIsSubmitting(true);
-      const randomCode = `PPDB-FATAHILLAH-${Math.floor(100000 + Math.random() * 900000)}`;
+      const randomCode = `PPDB-ALMAQOM-${Math.floor(100000 + Math.random() * 900000)}`;
       setRegistrationCode(randomCode);
 
       // Save to Firebase Firestore in real-time
@@ -96,13 +96,13 @@ export const PsbRegistrationModal: React.FC<PsbRegistrationModalProps> = ({ isOp
         {/* Modal Top Header */}
         <div className="bg-gradient-to-r from-emerald-900 to-teal-900 text-white p-5 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <PgriLogo size={42} />
+            <SchoolLogo size={44} withWhiteBg />
             <div>
               <h3 className="font-extrabold text-base sm:text-lg">
                 Formulir Pra-Pendaftaran PPDB 2027/2028
               </h3>
               <p className="text-xs text-emerald-200">
-                MTs Fatahillah Cimahi — Yayasan Fatahillah Cimahi
+                RA Al-Maqom — Yayasan Al-Maqom
               </p>
             </div>
           </div>
@@ -229,14 +229,13 @@ export const PsbRegistrationModal: React.FC<PsbRegistrationModalProps> = ({ isOp
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
                     <label className="block text-xs font-bold text-slate-700 mb-1">
-                      Asal SD / MI *
+                      Asal KB / PAUD / Posyandu (Opsional)
                     </label>
                     <input
                       type="text"
-                      required
                       value={formData.originSchool}
                       onChange={(e) => setFormData({ ...formData, originSchool: e.target.value })}
-                      placeholder="Contoh: MIS Nurul Huda / SDN Cigugur Tengah"
+                      placeholder="Contoh: PAUD Al-Ikhlas / Belum Sekolah"
                       className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
                     />
                   </div>
@@ -334,7 +333,7 @@ export const PsbRegistrationModal: React.FC<PsbRegistrationModalProps> = ({ isOp
                   Pra-Pendaftaran Berhasil Terkirim!
                 </h3>
                 <p className="text-xs text-slate-600 mt-1 max-w-md mx-auto">
-                  Terima kasih atas minat Anda mendaftarkan putra-putri tercinta di MTs Fatahillah Cimahi.
+                  Terima kasih atas minat Anda mendaftarkan putra-putri tercinta di RA Al-Maqom.
                 </p>
               </div>
 

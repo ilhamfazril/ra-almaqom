@@ -1,6 +1,6 @@
 // IndexedDB helper to persist pure, original user photos for the slides without quality loss or quota limits
 
-const DB_NAME = 'mts_fatahillah_media';
+const DB_NAME = 'ra_almaqom_media';
 const DB_VERSION = 1;
 const STORE_NAME = 'slides';
 

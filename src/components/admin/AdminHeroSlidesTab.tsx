@@ -35,9 +35,9 @@ export const AdminHeroSlidesTab: React.FC<AdminHeroSlidesTabProps> = ({
       {
         id: 1,
         bgImage: '/images/slide1_gedung.jpg',
-        title: 'MTs Fatahillah Cimahi - Disiplin, Cerdas, Berkarakter',
-        subtitle: 'Terakreditasi "A" Unggul | Kurikulum Merdeka & Budipekerti Luhur',
-        description: 'Mewujudkan generasi pembelajar yang berakhlak mulia, berprestasi akademik dan non-akademik, serta adaptif terhadap kemajuan teknologi.',
+        title: 'RA Al-Maqom - Ceria, Cerdas, Berakhlakul Karimah',
+        subtitle: 'Terakreditasi BAP-S/M | Kurikulum Merdeka PAUD & Nilai Islami',
+        description: 'Mewujudkan generasi Qur’ani usia dini yang mandiri, kreatif, dan berakhlak mulia dengan metode bermain sambil belajar yang menyenangkan.',
         badge: 'Profil Sekolah',
         primaryBtn: 'Pendaftaran PPDB 2026/2027',
         secondaryBtn: 'Jelajahi Profil Sekolah'
@@ -101,8 +101,8 @@ export const AdminHeroSlidesTab: React.FC<AdminHeroSlidesTabProps> = ({
     const newSlide: HeroSlideContent = {
       id: newSlideId,
       bgImage: '/images/slide1_gedung.jpg',
-      alt: `Slide ${newSlideNumber} MTs Fatahillah Cimahi`,
-      title: `Slide ${newSlideNumber} - Program & Kegiatan MTs Fatahillah Cimahi`,
+      alt: `Slide ${newSlideNumber} RA Al-Maqom`,
+      title: `Slide ${newSlideNumber} - Program & Kegiatan RA Al-Maqom`,
       subtitle: 'Membimbing Potensi Terbaik Generasi Penerus Bangsa',
       description: 'Kegiatan edukatif dan pembentukan kepribadian siswa berwawasan global yang didampingi oleh tenaga pendidik profesional.',
       badge: 'Kegiatan Sekolah',
@@ -170,7 +170,7 @@ export const AdminHeroSlidesTab: React.FC<AdminHeroSlidesTabProps> = ({
     { label: 'Upacara & Siswa', url: '/images/slide2_upacara.jpg' },
     { label: 'Lab Komputer ANBK', url: '/images/slide3_lab_komputer.jpg' },
     { label: 'Lapangan Olahraga', url: '/images/slide4_lapangan.jpg' },
-    { label: 'Gedung Sekolah MTs Fatahillah', url: '/images/slide1_gedung.jpg' },
+    { label: 'Gedung Sekolah RA Al-Maqom', url: '/images/slide1_gedung.jpg' },
     { label: 'Aktivitas Belajar Siswa', url: '/images/slide3_lab_komputer.jpg' }
   ];
 
