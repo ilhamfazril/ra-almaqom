@@ -289,6 +289,7 @@ export async function fetchLiveContentFromFirestoreRest(): Promise<Partial<Schoo
     'achievements',
     'extracurriculars',
     'teachers',
+    'customLogo',
   ];
 
   const result: Partial<SchoolSiteContent> = {};
@@ -345,6 +346,7 @@ export async function saveLiveContentToFirestoreRest(data: Partial<SchoolSiteCon
     'achievements',
     'extracurriculars',
     'teachers',
+    'customLogo',
   ];
 
   const sectionsToSave = sections.filter((sec) => (data as any)[sec] !== undefined);
@@ -413,6 +415,7 @@ export interface SchoolSiteContent {
   extracurriculars: ExtracurricularItem[];
   achievements: AchievementItem[];
   teachers?: TeacherStaff[];
+  customLogo?: string;
   stats?: SchoolStatsContent;
   updatedAt?: number;
   updatedBy?: string;
@@ -520,6 +523,7 @@ export const DEFAULT_SITE_CONTENT: SchoolSiteContent = {
     ? (PERSISTED_USER_CONTENT.achievements as AchievementItem[])
     : ACHIEVEMENTS_LIST,
   teachers: DEFAULT_TEACHERS_CONTENT,
+  customLogo: (PERSISTED_USER_CONTENT as any).customLogo || '',
   stats: DEFAULT_STATS_CONTENT,
   updatedAt: PERSISTED_USER_CONTENT.updatedAt || Date.now(),
   updatedBy: PERSISTED_USER_CONTENT.updatedBy || 'admin_ilham',
@@ -642,6 +646,13 @@ function notifySubscribers(content: SchoolSiteContent) {
       console.error('Subscriber callback error:', err);
     }
   });
+}
+
+/**
+ * Get current custom logo URL or null if using official vector logo.
+ */
+export function getCurrentSchoolLogo(): string | null {
+  return currentSiteContentMemory?.customLogo || null;
 }
 
 /**
@@ -827,6 +838,9 @@ export function mergeWithDefaults(data?: Partial<SchoolSiteContent> | null): Sch
       };
     }),
     stats: sanitized.stats || currentSiteContentMemory.stats || (PERSISTED_USER_CONTENT as any).stats || DEFAULT_STATS_CONTENT,
+    customLogo: (sanitized as any).customLogo !== undefined
+      ? (sanitized as any).customLogo
+      : (currentSiteContentMemory.customLogo || (PERSISTED_USER_CONTENT as any).customLogo || ''),
     updatedAt: sanitized.updatedAt || currentSiteContentMemory.updatedAt || Date.now(),
     updatedBy: sanitized.updatedBy || currentSiteContentMemory.updatedBy || 'admin_ilham',
   };
@@ -844,6 +858,12 @@ export function mergePreservingUploads(
   let hasLocalOnlyUploads = false;
 
   const res: SchoolSiteContent = { ...target };
+
+  // Custom Logo
+  if (source.customLogo !== undefined && source.customLogo !== res.customLogo) {
+    res.customLogo = source.customLogo;
+    hasLocalOnlyUploads = true;
+  }
 
   // Facilities
   if (Array.isArray(source.facilities)) {
@@ -1101,6 +1121,7 @@ export function subscribeToSiteContent(
     'extracurriculars',
     'teachers',
     'stats',
+    'customLogo',
   ];
 
   const unsubs: (() => void)[] = [];
@@ -1179,6 +1200,7 @@ export async function saveSiteContentToFirestore(
     'extracurriculars',
     'teachers',
     'stats',
+    'customLogo',
   ];
 
   // 1. Immediately merge into memory & notify local subscribers (optimistic fast UI)

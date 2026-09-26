@@ -22,7 +22,8 @@ import {
   ArrowLeft,
   GraduationCap,
   Users,
-  BarChart3
+  BarChart3,
+  Sparkles
 } from 'lucide-react';
 import { 
   SchoolSiteContent, 
@@ -49,11 +50,13 @@ import { AdminFacilitiesTab } from './admin/AdminFacilitiesTab';
 import { AdminExtracurricularsTab } from './admin/AdminExtracurricularsTab';
 import { AdminAchievementsTab } from './admin/AdminAchievementsTab';
 import { AdminPpdbTab } from './admin/AdminPpdbTab';
+import { AdminLogoTab } from './admin/AdminLogoTab';
 import { RealtimeSuccessModal, RealtimeSuccessInfo } from './RealtimeSuccessModal';
 
 export type AdminTab = 
   | 'overview' 
   | 'slides' 
+  | 'logo'
   | 'stats'
   | 'principal' 
   | 'programs' 
@@ -238,6 +241,44 @@ export const AdminDashboardModal: React.FC<AdminDashboardModalProps> = ({
         details: 'Seluruh banner visual utama di halaman depan website telah diperbarui dan langsung berganti secara real-time.',
       }
     );
+  };
+
+  const handleSaveCustomLogo = async (optimizedDataUrl: string): Promise<boolean> => {
+    try {
+      await updateSiteSection(
+        { customLogo: optimizedDataUrl },
+        {
+          sectionName: 'Logo Resmi Sekolah',
+          title: 'Logo Kustom Baru (Kompresi HD)',
+          action: 'update',
+          targetTab: 'beranda',
+          details: 'Logo sekolah berhasil diperbarui secara real-time ke seluruh navbar, footer, dan dokumen panduan sekolah.',
+        }
+      );
+      return true;
+    } catch (err) {
+      console.error('Save logo error:', err);
+      return false;
+    }
+  };
+
+  const handleResetCustomLogo = async (): Promise<boolean> => {
+    try {
+      await updateSiteSection(
+        { customLogo: '' },
+        {
+          sectionName: 'Logo Resmi Sekolah',
+          title: 'Logo Vektor Resmi Default',
+          action: 'reset',
+          targetTab: 'beranda',
+          details: 'Logo sekolah telah dikembalikan ke logo vektor resmi default RA Al-Maqom secara real-time.',
+        }
+      );
+      return true;
+    } catch (err) {
+      console.error('Reset logo error:', err);
+      return false;
+    }
   };
 
   const handleSavePrincipal = async (updatedPrincipal: PrincipalProfileContent) => {
@@ -437,6 +478,12 @@ export const AdminDashboardModal: React.FC<AdminDashboardModalProps> = ({
       label: 'Slide Banner Hero',
       icon: <ImageIcon className="w-4 h-4" />,
       badge: siteContent.heroSlides?.length || 4,
+    },
+    {
+      id: 'logo' as AdminTab,
+      label: 'Logo & Lambang',
+      icon: <Sparkles className="w-4 h-4 text-emerald-400" />,
+      badge: siteContent.customLogo ? 'Kustom' : null,
     },
     {
       id: 'stats' as AdminTab,
@@ -707,6 +754,14 @@ export const AdminDashboardModal: React.FC<AdminDashboardModalProps> = ({
                   slides={siteContent.heroSlides || DEFAULT_HERO_SLIDES}
                   onSaveSlides={handleSaveSlides}
                   onBack={handleGoBack}
+                />
+              )}
+
+              {activeTab === 'logo' && (
+                <AdminLogoTab
+                  currentCustomLogo={siteContent.customLogo}
+                  onSaveLogo={handleSaveCustomLogo}
+                  onResetLogo={handleResetCustomLogo}
                 />
               )}
 

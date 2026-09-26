@@ -62,6 +62,16 @@ export const AdminOverviewTab: React.FC<AdminOverviewTabProps> = ({
       description: 'Banner foto utama halaman depan',
     },
     {
+      id: 'logo',
+      label: 'Logo & Lambang Sekolah',
+      count: content.customLogo ? 'Kustom' : 'Vektor',
+      unit: 'Aktif',
+      icon: <Sparkles className="w-5 h-5 text-emerald-600" />,
+      bgColor: 'bg-emerald-50',
+      borderColor: 'border-emerald-200',
+      description: 'Upload logo kustom kualitas HD & kompresi aman',
+    },
+    {
       id: 'stats',
       label: '4 Matriks Sekolah',
       count: 4,

@@ -27,6 +27,7 @@
         "facilities": { "type": "array" },
         "extracurriculars": { "type": "array" },
         "achievements": { "type": "array" },
+        "customLogo": { "type": "string" },
         "updatedAt": { "type": "number" },
         "updatedBy": { "type": "string" }
       }

@@ -105,6 +105,7 @@ export interface SchoolSiteContent {
   extracurriculars: ExtracurricularItem[];
   achievements: AchievementItem[];
   teachers?: TeacherStaff[];
+  customLogo?: string;
   stats?: {
     students?: string;
     teachers?: string;
