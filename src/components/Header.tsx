@@ -35,6 +35,7 @@ interface HeaderProps {
   onOpenAdminDashboard: () => void;
   onLogoutAdmin: () => void;
   onSelectAcademicFilter?: (filter: 'all' | 'kurikulum' | 'anbk' | 'karakter') => void;
+  customLogo?: string;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -47,6 +48,7 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenAdminDashboard,
   onLogoutAdmin,
   onSelectAcademicFilter,
+  customLogo,
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -150,7 +152,7 @@ export const Header: React.FC<HeaderProps> = ({
           >
             {/* Official RA Al-Maqom Vector Logo */}
             <div className="relative group-hover:scale-105 transition-transform duration-300 shrink-0">
-              <SchoolLogo className="w-10 h-10 sm:w-[50px] sm:h-[50px]" size={50} />
+              <SchoolLogo className="w-10 h-10 sm:w-[50px] sm:h-[50px]" size={50} customSrc={customLogo} />
             </div>
 
             <div className="flex flex-col justify-center min-w-0">

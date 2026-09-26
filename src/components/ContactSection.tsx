@@ -128,7 +128,7 @@ export const ContactSection: React.FC = () => {
                 <div className="flex items-center justify-between mb-1.5">
                   <span className="text-amber-400 text-xs font-extrabold uppercase tracking-wider flex items-center gap-1.5">
                     <MapPin className="w-3.5 h-3.5 text-amber-400" />
-                    Lokasi Kampus RA Al-Maqom
+                    Lokasi Sekolah RA Al-Maqom
                   </span>
                   <span className="text-[11px] font-semibold text-emerald-300 bg-emerald-950 border border-emerald-700/60 px-2.5 py-0.5 rounded-full">
                     Cimahi Utara

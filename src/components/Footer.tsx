@@ -13,9 +13,10 @@ import { SchoolLogo } from './SchoolLogo';
 interface FooterProps {
   onNavigate: (tab: string) => void;
   onOpenPsbModal: () => void;
+  customLogo?: string;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenPsbModal }) => {
+export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenPsbModal, customLogo }) => {
   return (
     <footer className="bg-slate-950 text-slate-300 border-t border-slate-800">
       {/* Main Footer Links */}
@@ -25,7 +26,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenPsbModal }) =>
           {/* Col 1: Brand & Profile */}
           <div className="lg:col-span-4 space-y-4">
             <div className="flex items-center gap-3">
-              <SchoolLogo size={48} withWhiteBg />
+              <SchoolLogo size={48} withWhiteBg customSrc={customLogo} />
               <div>
                 <div className="text-white font-black text-base tracking-tight">
                   RA AL-MAQOM

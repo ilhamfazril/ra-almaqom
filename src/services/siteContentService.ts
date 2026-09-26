@@ -619,6 +619,7 @@ let currentSiteContentMemory: SchoolSiteContent = (() => {
       ? base.teachers
       : (DEFAULT_SITE_CONTENT.teachers || DEFAULT_TEACHERS_CONTENT),
     stats: (base as any).stats || DEFAULT_STATS_CONTENT,
+    customLogo: (base as any).customLogo !== undefined ? (base as any).customLogo : ((PERSISTED_USER_CONTENT as any).customLogo || ''),
     updatedAt: base.updatedAt || Date.now(),
     updatedBy: base.updatedBy || 'admin_ilham',
   };
@@ -674,7 +675,8 @@ export function cleanCampusTermsInObject<T>(obj: T): T {
       .replace(/MTs Fatahillah Cimahi/gi, 'RA Al-Maqom')
       .replace(/MTs Fatahillah/gi, 'RA Al-Maqom')
       .replace(/SMP PGRI 5 Cimahi/gi, 'RA Al-Maqom')
-      .replace(/SMP PGRI 5/gi, 'RA Al-Maqom') as unknown as T;
+      .replace(/SMP PGRI 5/gi, 'RA Al-Maqom')
+      .replace(/\bkampus\b/gi, (match) => (match === 'Kampus' ? 'Sekolah' : match === 'KAMPUS' ? 'SEKOLAH' : 'sekolah')) as unknown as T;
   }
   if (Array.isArray(obj)) {
     return obj.map(item => cleanCampusTermsInObject(item)) as unknown as T;
@@ -721,21 +723,20 @@ export function pickBestPhoto(
   persistedUrl?: string,
   fallbackUrl?: string
 ): string {
-  if (incomingUrl && isUserUploadedPhoto(incomingUrl)) return incomingUrl;
-  if (currentUrl && isUserUploadedPhoto(currentUrl)) return currentUrl;
-  if (persistedUrl && isUserUploadedPhoto(persistedUrl)) return persistedUrl;
-
-  // For teachers (where fallbackUrl is empty string), never allow building/court photos to be used
-  if (fallbackUrl === '') {
-    return '';
+  // 1. If incomingUrl is explicitly provided and non-empty, use the user's latest choice!
+  if (incomingUrl && typeof incomingUrl === 'string' && incomingUrl.trim() !== '') {
+    return incomingUrl;
   }
-
-  const cleanIncoming = incomingUrl && !incomingUrl.includes('unsplash.com') ? incomingUrl : undefined;
-  const cleanCurrent = currentUrl && !currentUrl.includes('unsplash.com') ? currentUrl : undefined;
-  const cleanPersisted = persistedUrl && !persistedUrl.includes('unsplash.com') ? persistedUrl : undefined;
-  const cleanFallback = fallbackUrl && !fallbackUrl.includes('unsplash.com') ? fallbackUrl : undefined;
-
-  return cleanIncoming || cleanCurrent || cleanPersisted || cleanFallback || '';
+  // 2. If currentUrl is in memory/cache and non-empty
+  if (currentUrl && typeof currentUrl === 'string' && currentUrl.trim() !== '') {
+    return currentUrl;
+  }
+  // 3. If persistedUrl is present and non-empty
+  if (persistedUrl && typeof persistedUrl === 'string' && persistedUrl.trim() !== '') {
+    return persistedUrl;
+  }
+  // 4. Default fallback
+  return fallbackUrl || '';
 }
 
 /**
@@ -855,106 +856,36 @@ export function mergePreservingUploads(
   source?: Partial<SchoolSiteContent> | null
 ): { result: SchoolSiteContent; hasLocalOnlyUploads: boolean } {
   if (!source) return { result: target, hasLocalOnlyUploads: false };
+
+  const sourceTime = Number(source.updatedAt || 0);
+  const targetTime = Number(target.updatedAt || 0);
+
+  // If local cache is newer than cloud data (e.g. recent admin edit right before page refresh)
+  if (sourceTime > targetTime) {
+    const mergedWithLocal: SchoolSiteContent = {
+      ...target,
+      ...source,
+      principal: {
+        ...target.principal,
+        ...(source.principal || {}),
+      },
+      stats: {
+        ...target.stats,
+        ...(source.stats || {}),
+      },
+      customLogo: source.customLogo !== undefined ? source.customLogo : (target.customLogo || ''),
+      updatedAt: sourceTime,
+    };
+    return { result: cleanCampusTermsInObject(mergedWithLocal), hasLocalOnlyUploads: true };
+  }
+
+  // Target is newer or equal: use target, while ensuring customLogo is retained
+  const res: SchoolSiteContent = { ...target };
   let hasLocalOnlyUploads = false;
 
-  const res: SchoolSiteContent = { ...target };
-
   // Custom Logo
-  if (source.customLogo !== undefined && source.customLogo !== res.customLogo) {
+  if (source.customLogo && (!res.customLogo || res.customLogo === '')) {
     res.customLogo = source.customLogo;
-    hasLocalOnlyUploads = true;
-  }
-
-  // Facilities
-  if (Array.isArray(source.facilities)) {
-    res.facilities = res.facilities.map((fac, idx) => {
-      const srcFac = source.facilities?.find((sf) => sf.id === fac.id) || source.facilities?.[idx];
-      if (srcFac && isUserUploadedPhoto(srcFac.image) && !isUserUploadedPhoto(fac.image)) {
-        hasLocalOnlyUploads = true;
-        return { ...fac, image: srcFac.image };
-      }
-      return fac;
-    });
-  }
-
-  // Hero Slides
-  if (Array.isArray(source.heroSlides)) {
-    res.heroSlides = res.heroSlides.map((slide, idx) => {
-      const srcSlide = source.heroSlides?.find((ss) => ss.id === slide.id) || source.heroSlides?.[idx];
-      if (srcSlide && isUserUploadedPhoto(srcSlide.bgImage) && !isUserUploadedPhoto(slide.bgImage)) {
-        hasLocalOnlyUploads = true;
-        return { ...slide, bgImage: srcSlide.bgImage };
-      }
-      return slide;
-    });
-  }
-
-  // News
-  if (Array.isArray(source.news)) {
-    res.news = res.news.map((item, idx) => {
-      const srcItem = source.news?.find((sn) => sn.id === item.id) || source.news?.[idx];
-      if (srcItem && isUserUploadedPhoto(srcItem.image) && !isUserUploadedPhoto(item.image)) {
-        hasLocalOnlyUploads = true;
-        return { ...item, image: srcItem.image };
-      }
-      return item;
-    });
-  }
-
-  // Programs
-  if (Array.isArray(source.programs)) {
-    res.programs = res.programs.map((item, idx) => {
-      const srcItem = source.programs?.find((sp) => sp.id === item.id) || source.programs?.[idx];
-      if (srcItem && isUserUploadedPhoto(srcItem.image) && !isUserUploadedPhoto(item.image)) {
-        hasLocalOnlyUploads = true;
-        return { ...item, image: srcItem.image };
-      }
-      return item;
-    });
-  }
-
-  // Principal
-  if (source.principal?.photo && isUserUploadedPhoto(source.principal.photo) && !isUserUploadedPhoto(res.principal.photo)) {
-    hasLocalOnlyUploads = true;
-    res.principal = { ...res.principal, photo: source.principal.photo };
-  }
-
-  // Teachers
-  if (Array.isArray(source.teachers) && Array.isArray(res.teachers)) {
-    res.teachers = res.teachers.map((teacher, idx) => {
-      const srcTeacher = source.teachers?.find((st) => st.id === teacher.id) || source.teachers?.[idx];
-      if (srcTeacher && isUserUploadedPhoto(srcTeacher.image) && !isUserUploadedPhoto(teacher.image)) {
-        hasLocalOnlyUploads = true;
-        return { ...teacher, image: srcTeacher.image };
-      }
-      return teacher;
-    });
-  }
-
-  // Achievements
-  if (Array.isArray(source.achievements) && Array.isArray(res.achievements)) {
-    // If local has more achievements or custom ones, preserve them
-    if (source.achievements.length > 0 && res.achievements.length === 0) {
-      res.achievements = source.achievements;
-      hasLocalOnlyUploads = true;
-    } else {
-      res.achievements = res.achievements.map((ach, idx) => {
-        const srcAch = source.achievements?.find((sa) => sa.id === ach.id) || source.achievements?.[idx];
-        if (srcAch && isUserUploadedPhoto(srcAch.image) && !isUserUploadedPhoto(ach.image)) {
-          hasLocalOnlyUploads = true;
-          return { ...ach, image: srcAch.image };
-        }
-        return ach;
-      });
-    }
-  } else if (Array.isArray(source.achievements) && source.achievements.length > 0) {
-    res.achievements = source.achievements;
-    hasLocalOnlyUploads = true;
-  }
-
-  // Extracurriculars
-  if (Array.isArray(source.extracurriculars) && source.extracurriculars.length > 0 && (!Array.isArray(res.extracurriculars) || res.extracurriculars.length === 0)) {
-    res.extracurriculars = source.extracurriculars;
     hasLocalOnlyUploads = true;
   }
 

@@ -155,6 +155,7 @@ export default function App() {
         onOpenAdminDashboard={() => handleOpenAdminDashboard('overview')}
         onLogoutAdmin={handleRequestLogout}
         onSelectAcademicFilter={setAcademicFilter}
+        customLogo={currentContent.customLogo}
       />
 
       {/* Main Content Areas based on Tab or Full Home Page */}
@@ -426,6 +427,7 @@ export default function App() {
       <Footer
         onNavigate={handleNavigate}
         onOpenPsbModal={() => setIsPsbModalOpen(true)}
+        customLogo={currentContent.customLogo}
       />
 
       {/* Floating Action Buttons */}

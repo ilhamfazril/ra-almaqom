@@ -41,7 +41,8 @@ function cleanCampusTerms(obj: any): any {
       .replace(/MTs Fatahillah/gi, 'RA Al-Maqom')
       .replace(/MTS FATAHILLAH/gi, 'RA AL-MAQOM')
       .replace(/Yayasan Fatahillah Cimahi/gi, 'Yayasan Al-Maqom')
-      .replace(/Yayasan Fatahillah/gi, 'Yayasan Al-Maqom');
+      .replace(/Yayasan Fatahillah/gi, 'Yayasan Al-Maqom')
+      .replace(/\bkampus\b/gi, (match) => (match === 'Kampus' ? 'Sekolah' : match === 'KAMPUS' ? 'SEKOLAH' : 'sekolah'));
   }
   if (Array.isArray(obj)) {
     return obj.map(cleanCampusTerms);
@@ -209,25 +210,23 @@ function mergeArrayPreservingImages(currentArr: any[], incomingArr: any[], idKey
 
     const mergedItem = { ...curItem, ...inItem };
 
-    // Check image field: user uploaded photos are strictly preserved
-    if (isUserUploadedPhoto(curItem.image) && !isUserUploadedPhoto(inItem.image)) {
-      mergedItem.image = curItem.image;
-    } else if (isUserUploadedPhoto(inItem.image)) {
+    // If incoming has an explicit image/photo, use incoming! Only fallback to curItem if incoming is missing
+    if (inItem.image && typeof inItem.image === 'string' && inItem.image.trim() !== '') {
       mergedItem.image = inItem.image;
+    } else if (curItem.image) {
+      mergedItem.image = curItem.image;
     }
 
-    // Check bgImage field (for heroSlides)
-    if (isUserUploadedPhoto(curItem.bgImage) && !isUserUploadedPhoto(inItem.bgImage)) {
-      mergedItem.bgImage = curItem.bgImage;
-    } else if (isUserUploadedPhoto(inItem.bgImage)) {
+    if (inItem.bgImage && typeof inItem.bgImage === 'string' && inItem.bgImage.trim() !== '') {
       mergedItem.bgImage = inItem.bgImage;
+    } else if (curItem.bgImage) {
+      mergedItem.bgImage = curItem.bgImage;
     }
 
-    // Check photo field (for principal)
-    if (isUserUploadedPhoto(curItem.photo) && !isUserUploadedPhoto(inItem.photo)) {
-      mergedItem.photo = curItem.photo;
-    } else if (isUserUploadedPhoto(inItem.photo)) {
+    if (inItem.photo && typeof inItem.photo === 'string' && inItem.photo.trim() !== '') {
       mergedItem.photo = inItem.photo;
+    } else if (curItem.photo) {
+      mergedItem.photo = curItem.photo;
     }
 
     return mergedItem;
@@ -282,7 +281,7 @@ app.post('/api/content/sync', (req, res) => {
       const curPrincipal = current.principal || {};
       const inPrincipal = incoming.principal;
       merged.principal = { ...curPrincipal, ...inPrincipal };
-      if (curPrincipal.photo && isUserUploadedPhoto(curPrincipal.photo) && (!inPrincipal.photo || !isUserUploadedPhoto(inPrincipal.photo))) {
+      if ((!inPrincipal.photo || inPrincipal.photo.trim() === '') && curPrincipal.photo) {
         merged.principal.photo = curPrincipal.photo;
       }
     }
