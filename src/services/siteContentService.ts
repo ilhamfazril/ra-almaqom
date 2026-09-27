@@ -11,7 +11,8 @@ import {
   query,
   orderBy,
   getDocFromServer,
-  getDocs
+  getDocs,
+  writeBatch
 } from '../lib/firebase';
 import firebaseConfigData from '../../firebase-applet-config.json';
 import {
@@ -1150,85 +1151,85 @@ export async function saveSiteContentToFirestore(
     sectionsToSave.push(...sectionsList);
   }
 
-  // Save to local cache immediately
+  // Save to local cache immediately (< 1ms)
   safeSetLocalStorage(mergedDoc);
 
-  // 3a. Primary Persistence: Save directly to Server Persistent Store (/api/content & /api/content/sync)
-  // This guarantees all devices immediately see every upload without Firestore 429 Quota Exceeded blockers!
-  let serverSuccess = false;
-  try {
-    const srv1 = await saveContentToServer(updatedContent);
-    const srv2 = await syncLocalContentToServer(mergedDoc);
-    if (srv1 || srv2) {
-      serverSuccess = true;
+  const now = Date.now();
+
+  // 3a. Ultra-Fast Parallel Firestore Batched Write
+  // Batches all section document writes + metadata into a SINGLE network roundtrip
+  const firestoreBatchPromise = (async (): Promise<boolean> => {
+    try {
+      const batch = writeBatch(db);
+      for (const sec of sectionsToSave) {
+        const secData = (mergedDoc as any)[sec];
+        if (secData !== undefined) {
+          const cleanedSecData = cleanForFirestore(secData);
+          const secDocRef = doc(db, 'site_content', 'section_' + String(sec));
+          batch.set(
+            secDocRef,
+            {
+              data: cleanedSecData,
+              updatedAt: now,
+              updatedBy: adminUsername,
+            },
+            { merge: true }
+          );
+        }
+      }
+      batch.set(
+        CONTENT_DOC_REF,
+        {
+          updatedAt: now,
+          updatedBy: adminUsername,
+          lastSectionsUpdated: sectionsToSave.map(String),
+        },
+        { merge: true }
+      );
+      await batch.commit();
+      return true;
+    } catch (batchErr) {
+      console.warn('Firestore SDK batch commit notice, running parallel fallback writes:', batchErr);
+      let anyOk = false;
+      await Promise.all(
+        sectionsToSave.map(async (sec) => {
+          const secData = (mergedDoc as any)[sec];
+          if (secData === undefined) return;
+          const cleanedSecData = cleanForFirestore(secData);
+          try {
+            const secDocRef = doc(db, 'site_content', 'section_' + String(sec));
+            await setDoc(
+              secDocRef,
+              {
+                data: cleanedSecData,
+                updatedAt: now,
+                updatedBy: adminUsername,
+              },
+              { merge: true }
+            );
+            anyOk = true;
+          } catch (e) {
+            try {
+              const restOk = await saveSectionToFirestoreRest(String(sec), cleanedSecData, adminUsername);
+              if (restOk) anyOk = true;
+            } catch {}
+          }
+        })
+      );
+      return anyOk;
     }
-  } catch (srvErr) {
-    console.warn('Server storage save notice:', srvErr);
-  }
+  })();
 
-  // 3b. Secondary Cloud Backup: Save each updated section independently to Google Cloud Firestore
-  let firestoreSuccess = false;
+  // 3b. Parallel Server Persistence: Save updated slice to Server Persistent Store concurrently
+  const serverSavePromise = saveContentToServer(updatedContent);
 
-  await Promise.all(
-    sectionsToSave.map(async (sec) => {
-      const secData = (mergedDoc as any)[sec];
-      if (secData === undefined) return;
+  // Execute Firestore batch write and server write in parallel without waiting serially
+  await Promise.allSettled([firestoreBatchPromise, serverSavePromise]);
 
-      const cleanedSecData = cleanForFirestore(secData);
-      let sdkSuccess = false;
-      let restSuccess = false;
-
-      // Persist via Firestore SDK
-      try {
-        const secDocRef = doc(db, 'site_content', 'section_' + String(sec));
-        await setDoc(
-          secDocRef,
-          {
-            data: cleanedSecData,
-            updatedAt: Date.now(),
-            updatedBy: adminUsername,
-          },
-          { merge: true }
-        );
-        sdkSuccess = true;
-      } catch (sdkErr) {
-        console.warn(`Firestore SDK write notice for section_${String(sec)}:`, sdkErr);
-      }
-
-      // Persist via direct HTTPS REST
-      try {
-        restSuccess = await saveSectionToFirestoreRest(String(sec), cleanedSecData, adminUsername);
-      } catch (restErr) {
-        console.warn(`Firestore REST write notice for section_${String(sec)}:`, restErr);
-      }
-
-      if (sdkSuccess || restSuccess) {
-        firestoreSuccess = true;
-      }
-    })
-  );
-
-  // 4. Update lightweight metadata in main_config (without large payload)
-  try {
-    setDoc(
-      CONTENT_DOC_REF,
-      {
-        updatedAt: Date.now(),
-        updatedBy: adminUsername,
-        lastSectionsUpdated: sectionsToSave.map(String),
-      },
-      { merge: true }
-    ).catch(() => {});
-  } catch {
-    // Non-blocking
-  }
-
-  if (serverSuccess) {
-    console.log('✓ Successfully saved site content to server persistent storage & local cache.');
-  } else if (!firestoreSuccess) {
-    // If both server and firestore failed, we still have local cache and memory intact
-    console.warn('Notice: Both server endpoint and Firestore write were limited, but data is preserved in local device cache & memory.');
-  }
+  // 4. Background non-blocking sync of full document (does not block UI or save response)
+  syncLocalContentToServer(mergedDoc).catch((err) => {
+    console.debug('Background server full sync notice:', err);
+  });
 
   return mergedDoc;
 }

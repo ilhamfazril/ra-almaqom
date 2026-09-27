@@ -12,7 +12,8 @@ import {
   query,
   orderBy,
   getDocFromServer,
-  getDocs
+  getDocs,
+  writeBatch
 } from 'firebase/firestore';
 import firebaseConfigData from '../../firebase-applet-config.json';
 
@@ -44,7 +45,8 @@ export {
   query,
   orderBy,
   getDocFromServer,
-  getDocs
+  getDocs,
+  writeBatch
 };
 
 async function testConnection() {
