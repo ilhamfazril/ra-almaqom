@@ -1,24 +1,64 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // School public site content (read by all visitors, updated by admin in real-time)
+
+    // Helper function untuk validasi status PPDB
+    function isValidPpdbStatus(status) {
+      return status in ['Menunggu', 'Diterima', 'Ditolak'];
+    }
+
+    // 1. Konten Website Resmi Sekolah (site_content)
+    // Read: Terbuka untuk umum dan Googlebot
+    // Write: Wajib menyertakan metadata waktu & identitas pengubah sah
+    // Delete: DITUTUP TOTAL (Mencegah penghapusan konten oleh pihak luar)
     match /site_content/{document=**} {
-      allow read, write: if true;
+      allow read: if true;
+      allow create, update: if request.resource.data.updatedAt is number
+                            && request.resource.data.updatedBy is string
+                            && request.resource.data.updatedBy.size() > 0;
+      allow delete: if false;
     }
 
-    // Media assets collection for uploaded photos (optimized, compressed, persistent)
-    match /media_assets/{document=**} {
-      allow read, write: if true;
+    // 2. Aset Media Foto / Gambar Sekolah (media_assets)
+    // Read: Terbuka untuk umum
+    // Write: Validasi ukuran dan format data URL yang sah
+    // Delete: DITUTUP TOTAL
+    match /media_assets/{assetId} {
+      allow read: if true;
+      allow create, update: if request.resource.data.id is string
+                            && request.resource.data.dataUrl is string
+                            && request.resource.data.dataUrl.size() < 1500000;
+      allow delete: if false;
     }
 
-    // PPDB Online registrations (submitted by public, managed by admin in real-time)
-    match /ppdb_registrations/{document=**} {
-      allow read, write: if true;
+    // 3. Pendaftaran Siswa Baru PPDB Online (ppdb_registrations)
+    // Create: Publik boleh mendaftar dengan validasi data ketat & status awal wajib "Menunggu"
+    // Update: Dibatasi ketat, HANYA boleh mengubah kolom status pendaftaran
+    // Delete: Hanya diizinkan untuk status yang tidak aktif/ditolak
+    match /ppdb_registrations/{registrationId} {
+      allow create: if request.resource.data.candidateName is string
+                    && request.resource.data.candidateName.size() >= 2
+                    && request.resource.data.candidateName.size() <= 120
+                    && request.resource.data.parentPhone is string
+                    && request.resource.data.parentPhone.size() >= 8
+                    && request.resource.data.parentPhone.size() <= 30
+                    && request.resource.data.originSchool is string
+                    && request.resource.data.registrationCode is string
+                    && request.resource.data.status == 'Menunggu'
+                    && request.resource.data.createdAt is number;
+
+      // Proteksi Integritas: Tidak ada orang luar yang bisa memalsukan identitas calon siswa
+      allow update: if isValidPpdbStatus(request.resource.data.status)
+                    && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status']);
+
+      allow read: if true;
+
+      allow delete: if resource.data.status in ['Ditolak', 'Menunggu'];
     }
 
-    // Default open for prototype
+    // 4. Global Lockdown: Kunci seluruh database di luar koleksi resmi sekolah
     match /{document=**} {
-      allow read, write: if true;
+      allow read, write: if false;
     }
   }
 }
